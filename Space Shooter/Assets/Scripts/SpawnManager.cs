@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     public GameObject enemy;
+    public GameObject enemyTwo;
     public GameObject powerup;
     public GameObject asteroid;
 
@@ -20,6 +21,7 @@ public class SpawnManager : MonoBehaviour
     void Start()
     {
         InvokeRepeating("SpawnEnemy", startDelay, enemySpawnInterval);
+        InvokeRepeating("SpawnEnemyTwo", startDelay, enemySpawnInterval);
         InvokeRepeating("SpawnPowerup", 10f, powerupSpawnInterval);
         InvokeRepeating("SpawnAsteroid", startDelay, asteroidSpawnInterval);
     }
@@ -34,6 +36,12 @@ public class SpawnManager : MonoBehaviour
     {
         Vector3 spawnPos = new Vector3(Random.Range(-spawnRangeX, spawnRangeX), spawnPosY, spawnPosZ);
         Instantiate(enemy, spawnPos, enemy.transform.rotation);
+    }
+
+    void SpawnEnemyTwo()
+    {
+        Vector3 spawnPos = new Vector3(Random.Range(-spawnRangeX, spawnRangeX), spawnPosY, spawnPosZ);
+        Instantiate(enemyTwo, spawnPos, enemy.transform.rotation);
     }
 
     void SpawnPowerup()

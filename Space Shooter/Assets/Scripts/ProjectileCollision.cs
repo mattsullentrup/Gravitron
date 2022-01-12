@@ -23,15 +23,21 @@ public class ProjectileCollision : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             Debug.Log("Laser - Enemy");
-            collision.gameObject.GetComponent<EnemyStats>().enemyHealth -= damage;
-            //Destroy(other.gameObject);
+            collision.gameObject.GetComponent<EnemyOne>().enemyHealth -= damage;
             Destroy(gameObject);
         }
+
+        if (collision.gameObject.CompareTag("Enemy Two"))
+        {
+            Debug.Log("Laser - Enemy");
+            collision.gameObject.GetComponent<EnemyTwo>().enemyHealth -= damage;
+            Destroy(gameObject);
+        }
+
         if (collision.gameObject.CompareTag("Asteroid"))
         {
             Debug.Log("Laser - Asteroid");
-            collision.gameObject.GetComponent<AsteroidStats>().asteroidHealth -= damage;
-            //Destroy(other.gameObject);
+            collision.gameObject.GetComponent<Asteroid>().asteroidHealth -= damage;
             Destroy(gameObject);
         }
     }
