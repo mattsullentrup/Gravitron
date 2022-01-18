@@ -12,12 +12,10 @@ public class EnemyOne : MonoBehaviour
     void Start()
     {
         enemyRb = GetComponent<Rigidbody>();
-        MoveDown();
-        Explode();
     }
 
     // Update is called once per frame
-    void Explode()
+    public void Explode()
     {
         if (enemyHealth <= 0)
         {
@@ -25,8 +23,15 @@ public class EnemyOne : MonoBehaviour
         }
     }
 
-    public virtual void MoveDown()
+    public virtual void FlyDown()
     {
-        transform.Translate(Vector3.forward * -speed * Time.deltaTime);
+        Debug.Log("E1 move down");
+        transform.Translate(speed * Time.deltaTime * Vector3.back);
+    }
+
+    private void Update()
+    {
+        FlyDown();
+        Explode();
     }
 }

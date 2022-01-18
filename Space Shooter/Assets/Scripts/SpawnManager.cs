@@ -13,7 +13,8 @@ public class SpawnManager : MonoBehaviour
     private float spawnPosZ = 10;
     private float spawnPosY = 1.5f;
     private float startDelay = 0.1f;
-    private float enemySpawnInterval = 2f;
+    public float enemySpawnInterval = 2f;
+    public float enemyTwoSpawnInterval = 3f;
     private float powerupSpawnInterval = 20f;
     private float asteroidSpawnInterval = 7f;
 
@@ -21,7 +22,7 @@ public class SpawnManager : MonoBehaviour
     void Start()
     {
         InvokeRepeating("SpawnEnemy", startDelay, enemySpawnInterval);
-        InvokeRepeating("SpawnEnemyTwo", startDelay, enemySpawnInterval);
+        InvokeRepeating("SpawnEnemyTwo", startDelay, enemyTwoSpawnInterval);
         InvokeRepeating("SpawnPowerup", 10f, powerupSpawnInterval);
         InvokeRepeating("SpawnAsteroid", startDelay, asteroidSpawnInterval);
     }
