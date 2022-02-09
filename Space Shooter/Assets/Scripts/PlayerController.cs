@@ -4,52 +4,57 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed = 7f;
+    [SerializeField] private float speed = 100f;
     private float zBound = 5.5f;
     private float xBound = 10f;
     private Rigidbody playerRb;
 
-    public GameObject projectilePrefab;
-    public Transform projectileSpawnPoint;
+    [SerializeField] private GameObject laserPrefab;
+    [SerializeField] private Transform projectileSpawnPoint;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         playerRb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        //Abstra
+        //Abstraction
         ConstrainPlayerPosition();
-        MovePlayer();
-        Shoot();
-        //ction
-    }
 
-    void Shoot()
-    {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            // Launch a projectile from the player
-            Instantiate(projectilePrefab, projectileSpawnPoint.position, projectilePrefab.transform.rotation);
+            Shoot();
         }
     }
 
     // Moves the player
-    void MovePlayer()
+    void FixedUpdate()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
-        //transform.Translate(Vector3.forward * speed * verticalInput * Time.deltaTime);
-        //transform.Translate(Vector3.right * speed * horizontalInput * Time.deltaTime);
+        Vector3 movement = new Vector3(horizontalInput, 0, verticalInput) * speed * Time.fixedDeltaTime;
 
-        Vector3 movement = new Vector3(horizontalInput, 0, verticalInput) * speed * Time.deltaTime;
+        //playerRb.velocity = (transform.position + movement);
+        playerRb.AddForce(movement);
+    }
 
-        playerRb.MovePosition(transform.position + movement);
-        //playerRb.AddForce(movement);
+    private void Shoot()
+    {
+        // Launch a projectile from the player
+        //Instantiate(laserPrefab, projectileSpawnPoint.position, laserPrefab.transform.rotation);
+
+        GameObject laser = ObjectPooler.Instance.GetPooledObject("Laser");
+
+        if (laser != null)
+        {
+            laser.transform.position = projectileSpawnPoint.position;
+            laser.transform.rotation = laser.transform.rotation;
+            laser.SetActive(true);
+        }
     }
 
     // Prevent the player from leaving the screen
@@ -80,18 +85,19 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Powerup"))
         {
-            Debug.Log("Player - Powerup");
-            Destroy(other.gameObject);
+            other.gameObject.SetActive(false);
         }
         if (other.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log("Player - Enemy");
-            Destroy(other.gameObject);
+            other.gameObject.SetActive(false);
+        }
+        if (other.gameObject.CompareTag("Enemy Two"))
+        {
+            other.gameObject.SetActive(false);
         }
         if (other.gameObject.CompareTag("Asteroid"))
         {
-            Debug.Log("Player - Asteroid");
-            Destroy(other.gameObject);
+            other.gameObject.SetActive(false);
         }
     }
 }

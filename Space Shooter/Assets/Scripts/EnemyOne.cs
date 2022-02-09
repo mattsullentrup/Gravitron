@@ -6,12 +6,11 @@ public class EnemyOne : MonoBehaviour
 {
     public int enemyHealth;
     public float speed = 1.0f;
-    public Rigidbody enemyRb;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Update()
     {
-        enemyRb = GetComponent<Rigidbody>();
+        Explode();
+        FlyDown();
     }
 
     // Update is called once per frame
@@ -19,19 +18,13 @@ public class EnemyOne : MonoBehaviour
     {
         if (enemyHealth <= 0)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
+            enemyHealth = 1;
         }
     }
 
     public virtual void FlyDown()
     {
-        Debug.Log("E1 move down");
         transform.Translate(speed * Time.deltaTime * Vector3.back);
-    }
-
-    private void Update()
-    {
-        FlyDown();
-        Explode();
     }
 }
