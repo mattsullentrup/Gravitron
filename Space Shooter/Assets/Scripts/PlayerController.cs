@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
-        Vector3 movement = new Vector3(horizontalInput, 0, verticalInput) * speed * Time.fixedDeltaTime;
+        Vector3 movement = speed * Time.fixedDeltaTime * new Vector3(horizontalInput, 0, verticalInput);
 
         //playerRb.velocity = (transform.position + movement);
         playerRb.AddForce(movement);
@@ -51,8 +51,7 @@ public class PlayerController : MonoBehaviour
 
         if (laser != null)
         {
-            laser.transform.position = projectileSpawnPoint.position;
-            laser.transform.rotation = laser.transform.rotation;
+            laser.transform.SetPositionAndRotation(projectileSpawnPoint.position, laser.transform.rotation);
             laser.SetActive(true);
         }
     }

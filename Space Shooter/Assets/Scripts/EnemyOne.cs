@@ -7,10 +7,26 @@ public class EnemyOne : MonoBehaviour
     public int enemyHealth;
     public float speed = 1.0f;
 
+    public float randomX;
+    public Vector3 directionToFace;
+
+    public Quaternion rotation;
+
+    private void Start()
+    {
+        randomX = Random.Range(-0.5f, 0.5f);
+        directionToFace = new Vector3(randomX, 0, -1);
+        rotation = Quaternion.LookRotation(-directionToFace, Vector3.up);
+    }
+
     private void Update()
     {
         Explode();
-        FlyDown();
+        EnemyMovement();
+
+        Debug.DrawRay(transform.position, directionToFace, Color.green);
+
+        transform.rotation = rotation;
     }
 
     // Update is called once per frame
@@ -23,8 +39,8 @@ public class EnemyOne : MonoBehaviour
         }
     }
 
-    public virtual void FlyDown()
+    public virtual void EnemyMovement()
     {
-        transform.Translate(speed * Time.deltaTime * Vector3.back);
+        transform.Translate(speed * Time.deltaTime * directionToFace, Space.World);
     }
 }

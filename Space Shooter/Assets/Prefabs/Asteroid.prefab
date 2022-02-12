@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 2298816303533460110}
   - component: {fileID: -5052158723067554054}
   - component: {fileID: 2298816303533460336}
-  - component: {fileID: -1223939864537978919}
   m_Layer: 0
   m_Name: Asteroid
   m_TagString: Asteroid
@@ -112,6 +111,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   asteroidHealth: 3
+  speed: 1
+  xRotationSpeed: 0
+  yRotationSpeed: 0
+  zRotationSpeed: 0
+  minRotation: {x: 0, y: 0, z: 0}
+  maxRotation: {x: 1, y: 1, z: 1}
 --- !u!114 &2298816303533460336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,19 +129,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9da44569957bf49e89c3a6be4b29d799, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-1223939864537978919
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2298816303533460105}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cdd04626902b43408a15458ddfce407, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 2
 --- !u!135 &3772581168093083551
 SphereCollider:
   m_ObjectHideFlags: 0

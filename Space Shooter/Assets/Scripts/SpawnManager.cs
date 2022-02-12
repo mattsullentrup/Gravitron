@@ -13,9 +13,13 @@ public class SpawnManager : MonoBehaviour
     private float powerupSpawnInterval = 20f;
     private float asteroidSpawnInterval = 7f;
 
+    public Vector3 enemyOneSpawnPos;
+
     // Start is called before the first frame update
     void Start()
     {
+        enemyOneSpawnPos = new Vector3(Random.Range(-spawnRangeX, spawnRangeX), spawnPosY, spawnPosZ);
+
         InvokeRepeating("SpawnEnemy", startDelay, enemyOneSpawnInterval);
         InvokeRepeating("SpawnEnemyTwo", startDelay, enemyTwoSpawnInterval);
         InvokeRepeating("SpawnPowerup", 10f, powerupSpawnInterval);
@@ -25,26 +29,24 @@ public class SpawnManager : MonoBehaviour
     void SpawnEnemy()
     {
         GameObject enemyOne = ObjectPooler.Instance.GetPooledObject("Enemy");
-        Vector3 spawnPos = new Vector3(Random.Range(-spawnRangeX, spawnRangeX), spawnPosY, spawnPosZ);
+        Vector3 enemyOneSpawnPos = new Vector3(Random.Range(-spawnRangeX, spawnRangeX), spawnPosY, spawnPosZ);
 
         if (enemyOne != null)
         {
-            enemyOne.transform.position = spawnPos;
-            enemyOne.transform.rotation = enemyOne.transform.rotation;
+            enemyOne.transform.SetPositionAndRotation(enemyOneSpawnPos, enemyOne.transform.rotation);
             enemyOne.GetComponent<EnemyOne>().enemyHealth = 1;
             enemyOne.SetActive(true);
         }
     }
 
-    void SpawnEnemyTwo()
+    public void SpawnEnemyTwo()
     {
         GameObject enemyTwo = ObjectPooler.Instance.GetPooledObject("Enemy Two");
-        Vector3 spawnPos = new Vector3(Random.Range(-spawnRangeX, spawnRangeX), spawnPosY, spawnPosZ);
+        Vector3 enemyTwoSpawnPos = new Vector3(Random.Range(-spawnRangeX, spawnRangeX), spawnPosY, spawnPosZ);
 
         if (enemyTwo != null)
         {
-            enemyTwo.transform.position = spawnPos;
-            enemyTwo.transform.rotation = enemyTwo.transform.rotation;
+            enemyTwo.transform.SetPositionAndRotation(enemyTwoSpawnPos, enemyTwo.transform.rotation);
             enemyTwo.GetComponent<EnemyTwo>().enemyHealth = 2;
             enemyTwo.SetActive(true);
         }
@@ -57,8 +59,7 @@ public class SpawnManager : MonoBehaviour
 
         if (powerup != null)
         {
-            powerup.transform.position = spawnPos;
-            powerup.transform.rotation = powerup.transform.rotation;
+            powerup.transform.SetPositionAndRotation(spawnPos, powerup.transform.rotation);
             powerup.SetActive(true);
         }
     }
@@ -70,8 +71,7 @@ public class SpawnManager : MonoBehaviour
 
         if (asteroid != null)
         {
-            asteroid.transform.position = spawnPos;
-            asteroid.transform.rotation = asteroid.transform.rotation;
+            asteroid.transform.SetPositionAndRotation(spawnPos, asteroid.transform.rotation);
             asteroid.GetComponent<Asteroid>().asteroidHealth = 3;
             asteroid.SetActive(true);
         }

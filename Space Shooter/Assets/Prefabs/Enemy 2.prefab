@@ -19401,7 +19401,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyHealth: 2
   speed: 2
-  xSpeed: 1
+  minRotation: {x: 0, y: 0, z: 0}
+  maxRotation: {x: 1, y: 1, z: 1}
+  rotationSpeed: 100
 --- !u!65 &-7409819361175512197
 BoxCollider:
   m_ObjectHideFlags: 0
