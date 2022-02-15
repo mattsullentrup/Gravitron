@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float speed = 100f;
-    private float zBound = 5.5f;
-    private float xBound = 10f;
+    [SerializeField] private float speed = 1100f;
+    private float zBound = 4.8f;
+    private float xBound = 14f;
     private Rigidbody playerRb;
 
-    [SerializeField] private GameObject laserPrefab;
+    [SerializeField] private GameObject powerupIndicator;
+    [SerializeField] private bool hasPowerup = false;
+
     [SerializeField] private Transform projectileSpawnPoint;
 
     // Start is called before the first frame update
@@ -57,7 +59,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Prevent the player from leaving the screen
-    void ConstrainPlayerPosition()
+    void ConstrainPlayerPosition() //Abstraction
     {
         if (transform.position.z < -zBound)
         {
@@ -84,7 +86,11 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Powerup"))
         {
+            hasPowerup = true;
+            speed = 2000f;
+            powerupIndicator.gameObject.SetActive(true);
             other.gameObject.SetActive(false);
+            StartCoroutine(PowerupCountdownRoutine());
         }
         if (other.gameObject.CompareTag("Enemy"))
         {
@@ -97,6 +103,14 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Asteroid"))
         {
             other.gameObject.SetActive(false);
+        }
+
+        IEnumerator PowerupCountdownRoutine()
+        {
+            yield return new WaitForSeconds(7);
+            hasPowerup = false;
+            powerupIndicator.gameObject.SetActive(false);
+            speed = 1100f;
         }
     }
 }

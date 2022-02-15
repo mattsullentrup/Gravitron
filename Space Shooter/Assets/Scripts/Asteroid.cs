@@ -7,7 +7,7 @@ public class Asteroid : MonoBehaviour
     public int asteroidHealth;
 
     [SerializeField] private float speed = 1f;
-
+    [SerializeField] private int pointValue;
     [SerializeField] private float rotationSpeed;
 
     [SerializeField] private float rotationRangeX;
@@ -15,6 +15,8 @@ public class Asteroid : MonoBehaviour
     [SerializeField] private float rotationRangeZ;
 
     public Vector3 randomRotation;
+
+    private GameManager gameManager;
 
     private void Start()
     {
@@ -25,6 +27,8 @@ public class Asteroid : MonoBehaviour
         rotationRangeZ = Random.Range(-1f, 1f);
 
         randomRotation = new Vector3(rotationRangeX, rotationRangeY, rotationRangeZ);
+
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
     private void Update()
@@ -38,6 +42,7 @@ public class Asteroid : MonoBehaviour
         if (asteroidHealth <= 0)
         {
             gameObject.SetActive(false);
+            gameManager.UpdateScore(pointValue);
         }
     }
 

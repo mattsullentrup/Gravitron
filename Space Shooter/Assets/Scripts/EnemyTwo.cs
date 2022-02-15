@@ -11,6 +11,7 @@ public class EnemyTwo : EnemyOne //Inheritance
     private void Start()
     {
         rotationSpeed = Random.Range(-15f, 15f);
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
