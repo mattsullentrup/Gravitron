@@ -19401,8 +19401,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyHealth: 2
   speed: 2
-  randomX: 0
-  pointValue: 4
   minRotation: {x: 0, y: 0, z: 0}
   maxRotation: {x: 1, y: 1, z: 1}
   rotationSpeed: 100
@@ -19417,8 +19415,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.6, y: 2.6, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2.6418896, y: 0.77492243, z: 1}
+  m_Center: {x: -0.020746171, y: -0.012505978, z: 0}
 --- !u!1 &145638
 GameObject:
   m_ObjectHideFlags: 0
