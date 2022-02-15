@@ -10,9 +10,13 @@ public class Laser : MonoBehaviour
     public int damage;
     public float speed = 40.0f;
 
-    private void Awake()
+    public int pointValue;
+
+    
+
+    private void Start()
     {
-        laserRb = GetComponent<Rigidbody>();
+        laserRb = GetComponent<Rigidbody>();        
     }
 
     private void Update()
@@ -24,8 +28,7 @@ public class Laser : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //laserRb.velocity = (transform.position + Vector3.forward * speed * Time.fixedDeltaTime);
-        laserRb.MovePosition(transform.position + Vector3.forward * speed * Time.fixedDeltaTime);
+        laserRb.MovePosition(transform.position + speed * Time.fixedDeltaTime * Vector3.forward);
     }
 
     void LaserBoundary()

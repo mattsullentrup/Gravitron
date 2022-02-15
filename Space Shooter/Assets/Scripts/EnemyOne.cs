@@ -5,18 +5,22 @@ using UnityEngine;
 public class EnemyOne : MonoBehaviour
 {
     public int enemyHealth;
-    public float speed = 1.0f;
+    [SerializeField] protected float speed = 1.0f;
+    private float randomX;
+    private Vector3 directionToFace;
+    private Quaternion rotation;
 
-    public float randomX;
-    public Vector3 directionToFace;
+    protected GameManager gameManager;
 
-    public Quaternion rotation;
+    [SerializeField] protected int pointValue;
 
     private void Start()
     {
         randomX = Random.Range(-0.5f, 0.5f);
         directionToFace = new Vector3(randomX, 0, -1);
         rotation = Quaternion.LookRotation(-directionToFace, Vector3.up);
+
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
     private void Update()
@@ -29,13 +33,12 @@ public class EnemyOne : MonoBehaviour
         transform.rotation = rotation;
     }
 
-    // Update is called once per frame
     public void Explode()
     {
         if (enemyHealth <= 0)
         {
             gameObject.SetActive(false);
-            enemyHealth = 1;
+            gameManager.UpdateScore(pointValue);
         }
     }
 
