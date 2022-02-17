@@ -27,9 +27,6 @@ public class EnemyOne : MonoBehaviour
     {
         Explode();
         EnemyMovement();
-
-        Debug.DrawRay(transform.position, directionToFace, Color.green);
-
         transform.rotation = rotation;
     }
 

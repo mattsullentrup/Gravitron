@@ -12,7 +12,7 @@ public class SpawnManager : MonoBehaviour
     private float enemyTwoSpawnInterval = 3f;
     private float powerupSpawnInterval = 20f;
     private float asteroidSpawnInterval = 7f;
-
+    private GameManager gameManager;
     public Vector3 enemyOneSpawnPos;
 
     // Start is called before the first frame update
@@ -20,10 +20,21 @@ public class SpawnManager : MonoBehaviour
     {
         enemyOneSpawnPos = new Vector3(Random.Range(-spawnRangeX, spawnRangeX), spawnPosY, spawnPosZ);
 
-        InvokeRepeating("SpawnEnemy", startDelay, enemyOneSpawnInterval);
-        InvokeRepeating("SpawnEnemyTwo", startDelay, enemyTwoSpawnInterval);
-        InvokeRepeating("SpawnPowerup", 10f, powerupSpawnInterval);
-        InvokeRepeating("SpawnAsteroid", startDelay, asteroidSpawnInterval);
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+
+        InvokeRepeating(nameof(SpawnEnemy), startDelay, enemyOneSpawnInterval);
+        InvokeRepeating(nameof(SpawnEnemyTwo), startDelay, enemyTwoSpawnInterval);
+        InvokeRepeating(nameof(SpawnPowerup), 10f, powerupSpawnInterval);
+        InvokeRepeating(nameof(SpawnAsteroid), startDelay, asteroidSpawnInterval);
+
+    }
+
+    private void Update()
+    {
+        if (gameManager.gameOver == true)
+        {
+            CancelInvoke();
+        }
     }
 
     void SpawnEnemy()
@@ -39,7 +50,7 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
-    public void SpawnEnemyTwo()
+    private void SpawnEnemyTwo()
     {
         GameObject enemyTwo = ObjectPooler.Instance.GetPooledObject("Enemy Two");
         Vector3 enemyTwoSpawnPos = new Vector3(Random.Range(-spawnRangeX, spawnRangeX), spawnPosY, spawnPosZ);

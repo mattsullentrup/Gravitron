@@ -4,44 +4,55 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float speed = 1100f;
-    private float zBound = 4.8f;
-    private float xBound = 14f;
+    public float playerSpeed = 1100f;
+    [SerializeField] private float zBound = 4.8f;
+    [SerializeField] private float xBound = 14f;
     private Rigidbody playerRb;
 
-    [SerializeField] private GameObject powerupIndicator;
-    [SerializeField] private bool hasPowerup = false;
+    private GameManager gameManager;
 
     [SerializeField] private Transform projectileSpawnPoint;
-
-    // Start is called before the first frame update
+    
     void Awake()
     {
         playerRb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
+    private void Start()
+    {
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+    }
+
     private void Update()
     {
         //Abstraction
         ConstrainPlayerPosition();
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (gameManager.gameOver == false)
         {
-            Shoot();
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                Shoot();
+            }
         }
     }
 
-    // Moves the player
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
+        PlayerMovement();
+    }
 
-        Vector3 movement = speed * Time.fixedDeltaTime * new Vector3(horizontalInput, 0, verticalInput);
+    // Moves the player
+    void PlayerMovement()
+    {
+        if (gameManager.gameOver == false)
+        {
+            float horizontalInput = Input.GetAxis("Horizontal");
+            float verticalInput = Input.GetAxis("Vertical");
 
-        //playerRb.velocity = (transform.position + movement);
-        playerRb.AddForce(movement);
+            Vector3 movement = playerSpeed * Time.fixedDeltaTime * new Vector3(horizontalInput, 0, verticalInput);
+            playerRb.AddForce(movement);
+        }
     }
 
     private void Shoot()
@@ -82,35 +93,5 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Powerup"))
-        {
-            hasPowerup = true;
-            speed = 2000f;
-            powerupIndicator.gameObject.SetActive(true);
-            other.gameObject.SetActive(false);
-            StartCoroutine(PowerupCountdownRoutine());
-        }
-        if (other.gameObject.CompareTag("Enemy"))
-        {
-            other.gameObject.SetActive(false);
-        }
-        if (other.gameObject.CompareTag("Enemy Two"))
-        {
-            other.gameObject.SetActive(false);
-        }
-        if (other.gameObject.CompareTag("Asteroid"))
-        {
-            other.gameObject.SetActive(false);
-        }
-
-        IEnumerator PowerupCountdownRoutine()
-        {
-            yield return new WaitForSeconds(7);
-            hasPowerup = false;
-            powerupIndicator.gameObject.SetActive(false);
-            speed = 1100f;
-        }
-    }
+    
 }
