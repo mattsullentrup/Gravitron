@@ -7,14 +7,11 @@ public class SpawnManager : MonoBehaviour
     private float spawnRangeX = 10;
     private float spawnPosZ = 8;
     private float spawnPosY = 1.5f;
-    //private float startDelay = 0.1f;
-    private float enemyOneSpawnInterval = 4f;
-    private float enemyTwoSpawnInterval = 5f;
-    private float powerupSpawnInterval = 20f;
-    private float asteroidSpawnInterval = 7f;
-    private GameManager gameManager;
-    public Vector3 enemyOneSpawnPos;
-    public static SpawnManager Instance;
+    [SerializeField] private float enemyOneSpawnInterval = 4f;
+    [SerializeField] private float enemyTwoSpawnInterval = 7f;
+    [SerializeField] private float powerupSpawnInterval = 20f;
+    [SerializeField] private float asteroidSpawnInterval = 9f;
+    [SerializeField] public static SpawnManager Instance;
 
     [SerializeField] private GameObject enemyOnePrefab;
     [SerializeField] private GameObject enemyTwoPrefab;
@@ -38,37 +35,6 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
-    //private void OnEnable()
-    //{
-    //    StartCoroutine(SpawnEnemyOne());
-    //}
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        enemyOneSpawnPos = new Vector3(Random.Range(-spawnRangeX, spawnRangeX), spawnPosY, spawnPosZ);
-        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
-
-        //StartCoroutine(SpawnEnemyOne());
-        //StartCoroutine(SpawnEnemyTwo());
-        //StartCoroutine(SpawnPowerup());
-        //StartCoroutine(SpawnAsteroid());
-
-
-        //InvokeRepeating(nameof(SpawnEnemyOne), startDelay, enemyOneSpawnInterval);
-        //InvokeRepeating(nameof(SpawnEnemyTwo), startDelay, enemyTwoSpawnInterval);
-        //InvokeRepeating(nameof(SpawnPowerup), 10f, powerupSpawnInterval);
-        //InvokeRepeating(nameof(SpawnAsteroid), startDelay, asteroidSpawnInterval);
-    }
-
-    private void Update()
-    {
-        //if (gameManager.gameOver == true)
-        //{
-        //    StopAllCoroutines();
-        //}
-    }
-
     public IEnumerator SpawnEnemyOne()
     {
         while (true)
@@ -86,7 +52,6 @@ public class SpawnManager : MonoBehaviour
         {
             yield return new WaitForSecondsRealtime(enemyTwoSpawnInterval);
             Vector3 spawnPos = new Vector3(Random.Range(-spawnRangeX, spawnRangeX), spawnPosY, spawnPosZ);
-
             GameObject newEnemyTwo = Instantiate(enemyTwoPrefab, spawnPos, Quaternion.identity);
             newEnemyTwo.GetComponent<EnemyTwo>().enemyHealth = 2;
         }

@@ -33,19 +33,6 @@ public class PlayerHealth : MonoBehaviour
         playerController = this.GetComponent<PlayerController>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (currentPlayerHealth == 2)
-        {
-            Debug.Log("health: 2");
-        }
-        if (currentPlayerHealth == 1)
-        {
-            Debug.Log("health: 1");
-        }
-    }
-
     // Sets the player's current health back to its initial value
     public void ResetHealth()
     {
