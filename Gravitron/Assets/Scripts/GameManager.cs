@@ -16,6 +16,10 @@ public class GameManager : MonoBehaviour
     private int score;
     private GameObject player;
     public SpawnManager spawnManager;
+    public GameObject playerHealthThree;
+    public GameObject playerHealthTwo;
+    public GameObject playerHealthOne;
+    public GameObject healthUI;
 
     private void Awake()
     {
@@ -47,13 +51,14 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         player = GameObject.Find("Player");
-        //spawnManager = GameObject.Find("Spawn Manager").GetComponent<SpawnManager>();
+        
         UpdateScore(0);
     }
 
     private void Update()
     {
         GameOver();
+        CheckPlayerHealth();
     }
 
     public void UpdateScore(int scoreToAdd)
@@ -71,7 +76,6 @@ public class GameManager : MonoBehaviour
             gameOverText.gameObject.SetActive(true);
             player.SetActive(false);
             StopAllCoroutines();
-            Debug.Log("YOU DIED");
         }
     }
 
@@ -87,9 +91,28 @@ public class GameManager : MonoBehaviour
         UpdateScore(0);
         titleScreen.SetActive(false);
         scoreText.gameObject.SetActive(true);
+        healthUI.SetActive(true);
         StartCoroutine(spawnManager.SpawnEnemyOne());
         StartCoroutine(spawnManager.SpawnEnemyTwo());
         StartCoroutine(spawnManager.SpawnPowerup());
         StartCoroutine(spawnManager.SpawnAsteroid());
+    }
+
+    private void CheckPlayerHealth()
+    {
+        if (player.GetComponent<PlayerHealth>().currentPlayerHealth == 2)
+        {
+            playerHealthThree.SetActive(false);
+        }
+
+        if (player.GetComponent<PlayerHealth>().currentPlayerHealth == 1)
+        {
+            playerHealthTwo.SetActive(false);
+        }
+
+        if (player.GetComponent<PlayerHealth>().currentPlayerHealth == 0)
+        {
+            playerHealthOne.SetActive(false);
+        }
     }
 }
