@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     public bool gameOver;
     private int score;
     private GameObject player;
-    private Button startButton;
+    public SpawnManager spawnManager;
 
     private void Awake()
     {
@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         player = GameObject.Find("Player");
+        //spawnManager = GameObject.Find("Spawn Manager").GetComponent<SpawnManager>();
         UpdateScore(0);
     }
 
@@ -69,6 +70,7 @@ public class GameManager : MonoBehaviour
             restartButton.gameObject.SetActive(true);
             gameOverText.gameObject.SetActive(true);
             player.SetActive(false);
+            StopAllCoroutines();
             Debug.Log("YOU DIED");
         }
     }
@@ -85,5 +87,9 @@ public class GameManager : MonoBehaviour
         UpdateScore(0);
         titleScreen.SetActive(false);
         scoreText.gameObject.SetActive(true);
+        StartCoroutine(spawnManager.SpawnEnemyOne());
+        StartCoroutine(spawnManager.SpawnEnemyTwo());
+        StartCoroutine(spawnManager.SpawnPowerup());
+        StartCoroutine(spawnManager.SpawnAsteroid());
     }
 }

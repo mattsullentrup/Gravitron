@@ -8,11 +8,7 @@ public class Laser : MonoBehaviour
     private Rigidbody laserRb;
 
     public int damage;
-    public float speed = 40.0f;
-
-    public int pointValue;
-
-    
+    [SerializeField] private float laserSpeed = 40.0f;
 
     private void Start()
     {
@@ -28,14 +24,14 @@ public class Laser : MonoBehaviour
 
     private void FixedUpdate()
     {
-        laserRb.MovePosition(transform.position + speed * Time.fixedDeltaTime * Vector3.forward);
+        laserRb.MovePosition(transform.position + laserSpeed * Time.fixedDeltaTime * Vector3.forward);
     }
 
     void LaserBoundary()
     {
         if (transform.position.z > topBound)
         {
-            gameObject.SetActive(false);
+            Destroy(gameObject);
         }
     }
 

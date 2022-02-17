@@ -13,6 +13,8 @@ public class Powerup : MonoBehaviour
     [SerializeField] private float rotationRangeY;
     [SerializeField] private float rotationRangeZ;
 
+    private float lowerBound = -10;
+
     public Vector3 randomVectorRotation;
 
     //public Quaternion randomQuaternionRotation;
@@ -43,6 +45,7 @@ public class Powerup : MonoBehaviour
     private void Update()
     {
         PowerUpMovement();
+        DestroyOutOfBounds();
     }
 
     private void PowerUpMovement()
@@ -51,5 +54,14 @@ public class Powerup : MonoBehaviour
 
         transform.Rotate(rotationSpeed * Time.deltaTime * randomVectorRotation);
 
+    }
+
+    private void DestroyOutOfBounds()
+    {
+        // If object goes past the player's view in the game, remove that object
+        if (transform.position.z < lowerBound)
+        {
+            Destroy(gameObject);
+        }
     }
 }

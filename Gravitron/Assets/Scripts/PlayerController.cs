@@ -8,9 +8,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float zBound = 4.8f;
     [SerializeField] private float xBound = 14f;
     private Rigidbody playerRb;
-
     private GameManager gameManager;
-
+    [SerializeField] private GameObject laserPrefab;
     [SerializeField] private Transform projectileSpawnPoint;
     
     void Awake()
@@ -58,15 +57,8 @@ public class PlayerController : MonoBehaviour
     private void Shoot()
     {
         // Launch a projectile from the player
-        //Instantiate(laserPrefab, projectileSpawnPoint.position, laserPrefab.transform.rotation);
-
-        GameObject laser = ObjectPooler.Instance.GetPooledObject("Laser");
-
-        if (laser != null)
-        {
-            laser.transform.SetPositionAndRotation(projectileSpawnPoint.position, laser.transform.rotation);
-            laser.SetActive(true);
-        }
+        Instantiate(laserPrefab, projectileSpawnPoint.position, laserPrefab.transform.rotation);
+        //transform.Translate(laserSpeed * Time.deltaTime * Vector3.forward);
     }
 
     // Prevent the player from leaving the screen
