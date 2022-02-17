@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    //public static GameManager Instance;
+    public static GameManager Instance;
     public GameObject titleScreen;
     public Text scoreText;
     public Text gameOverText;
@@ -15,32 +15,34 @@ public class GameManager : MonoBehaviour
     public bool gameOver;
     private int score;
     private GameObject player;
-    //private Button startButton;
-
-    //private void Awake()
-    //{
-    //    if (Instance != null)
-    //    {
-    //        Destroy(gameObject);
-    //        return;
-    //    }
-    //    else
-    //    {
-
-    //        Instance = this;
-    //        //DontDestroyOnLoad(gameObject);
-
-    //    }
-    //}
+    private Button startButton;
 
     private void Awake()
     {
         gameOver = true;
-        //titleScreen.SetActive(false);
-        //scoreText.gameObject.SetActive(false);
-        //restartButton.gameObject.SetActive(false);
-        //gameOverText.gameObject.SetActive(false);
+
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        else
+        {
+
+            Instance = this;
+            //DontDestroyOnLoad(gameObject);
+
+        }
     }
+
+    //private void Awake()
+    //{
+        
+    //    //titleScreen.SetActive(false);
+    //    //scoreText.gameObject.SetActive(false);
+    //    //restartButton.gameObject.SetActive(false);
+    //    //gameOverText.gameObject.SetActive(false);
+    //}
 
     private void Start()
     {
@@ -51,7 +53,6 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         GameOver();
-        RestartGame();
     }
 
     public void UpdateScore(int scoreToAdd)
