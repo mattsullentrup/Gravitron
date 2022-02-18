@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     public float playerSpeed = 1100f;
     private Rigidbody playerRb;
+    private bool launchAvailable = true;
+    [SerializeField] private float laserWaitTime = 0.25f;
     [SerializeField] private float zBound = 4.8f;
     [SerializeField] private float xBound = 14f;
     [SerializeField] private GameObject laserPrefab;
@@ -20,14 +22,7 @@ public class PlayerController : MonoBehaviour
     {
         //Abstraction
         ConstrainPlayerPosition();
-
-        if (GameManager.Manager.gameOver == false)
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                Shoot();
-            }
-        }
+        Shoot();
     }
 
     private void FixedUpdate()
@@ -50,9 +45,19 @@ public class PlayerController : MonoBehaviour
 
     private void Shoot()
     {
-        // Launch a projectile from the player
-        Instantiate(laserPrefab, projectileSpawnPoint.position, laserPrefab.transform.rotation);
-        //transform.Translate(laserSpeed * Time.deltaTime * Vector3.forward);
+        if (Input.GetKeyDown(KeyCode.Space) && GameManager.Manager.gameOver == false && launchAvailable == true)
+        {
+            // Launch a projectile from the player
+            Instantiate(laserPrefab, projectileSpawnPoint.position, laserPrefab.transform.rotation);
+            StartCoroutine(WaitToLaunch());
+        }
+    }
+
+    IEnumerator WaitToLaunch()
+    {
+        launchAvailable = false;
+        yield return new WaitForSeconds(laserWaitTime);
+        launchAvailable = true;
     }
 
     // Prevent the player from leaving the screen

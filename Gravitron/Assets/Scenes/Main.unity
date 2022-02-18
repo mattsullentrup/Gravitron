@@ -542,9 +542,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentPlayerHealth: 0
+  hasPowerup: 0
   healthInitial: 3
   powerupIndicator: {fileID: 725696411}
-  hasPowerup: 0
 --- !u!1 &615543773 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1629580522943273989, guid: a6a33d2a01f5643be86de8a92688f6b2, type: 3}
@@ -1345,7 +1345,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7add1649a792487393f7fb8c887cc54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyOneSpawnPos: {x: 0, y: 0, z: 0}
+  enemyOneSpawnInterval: 4
+  enemyTwoSpawnInterval: 7
+  powerupSpawnInterval: 20
+  asteroidSpawnInterval: 9
   enemyOnePrefab: {fileID: 2839710364907366730, guid: 0af32f7722b3d4709ae224515010d23f, type: 3}
   enemyTwoPrefab: {fileID: 139020, guid: 02216b8dfa64dd14eb1fc6953f4c9c65, type: 3}
   asteroidPrefab: {fileID: 2298816303533460105, guid: b606a444d7eb447f7af2678e7d28ce2d, type: 3}
@@ -1906,7 +1909,6 @@ MonoBehaviour:
   gameOverText: {fileID: 1477650705}
   restartButton: {fileID: 645808026}
   gameOver: 0
-  spawnManager: {fileID: 985067899}
   playerHealthThree: {fileID: 96063329}
   playerHealthTwo: {fileID: 679986873}
   playerHealthOne: {fileID: 1227337397}
@@ -2016,6 +2018,10 @@ PrefabInstance:
       propertyPath: laserPrefab
       value: 
       objectReference: {fileID: 3266569859923700233, guid: 9b3d1dd4200604f6da0cdf53b07e4d08, type: 3}
+    - target: {fileID: 5148552329898852720, guid: a6a33d2a01f5643be86de8a92688f6b2, type: 3}
+      propertyPath: laserWaitTime
+      value: 0.15
+      objectReference: {fileID: 0}
     - target: {fileID: 5148552329898852720, guid: a6a33d2a01f5643be86de8a92688f6b2, type: 3}
       propertyPath: powerupIndicator
       value: 
