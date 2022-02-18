@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class Laser : MonoBehaviour
 {
+    public int damage;
     private float topBound = 20;
     private Rigidbody laserRb;
-
-    public int damage;
     [SerializeField] private float laserSpeed = 40.0f;
 
     private void Start()
@@ -17,8 +16,6 @@ public class Laser : MonoBehaviour
 
     private void Update()
     {
-        //transform.Translate(Vector3.forward * speed * Time.deltaTime);
-
         LaserBoundary();
     }
 

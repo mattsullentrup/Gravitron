@@ -25,7 +25,6 @@ GameObject:
   - component: {fileID: 7509510799577179592}
   - component: {fileID: 7509510799577179595}
   - component: {fileID: 7509510799577179594}
-  - component: {fileID: 7509510799577179588}
   - component: {fileID: -6348124378837024614}
   m_Layer: 0
   m_Name: Powerup
@@ -112,18 +111,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7509510799577179588
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7509510799577179597}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9da44569957bf49e89c3a6be4b29d799, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &-6348124378837024614
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -15,11 +15,10 @@ public class PlayerHealth : MonoBehaviour
 
 
     public int currentPlayerHealth;
+    public bool hasPowerup = false;
+    private PlayerController playerController;
     [SerializeField] private int healthInitial = 3;
     [SerializeField] private GameObject powerupIndicator;
-    public bool hasPowerup = false;
-    private GameManager gameManager;
-    private PlayerController playerController;
 
     private void Awake()
     {
@@ -29,7 +28,6 @@ public class PlayerHealth : MonoBehaviour
 
     private void Start()
     {
-        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         playerController = this.GetComponent<PlayerController>();
     }
 
@@ -42,7 +40,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (gameManager.gameOver == false)
+        if (GameManager.Manager.gameOver == false)
         {
             if (other.gameObject.CompareTag("Powerup"))
             {

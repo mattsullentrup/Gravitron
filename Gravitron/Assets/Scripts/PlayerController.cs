@@ -5,10 +5,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float playerSpeed = 1100f;
+    private Rigidbody playerRb;
     [SerializeField] private float zBound = 4.8f;
     [SerializeField] private float xBound = 14f;
-    private Rigidbody playerRb;
-    private GameManager gameManager;
     [SerializeField] private GameObject laserPrefab;
     [SerializeField] private Transform projectileSpawnPoint;
     
@@ -17,17 +16,12 @@ public class PlayerController : MonoBehaviour
         playerRb = GetComponent<Rigidbody>();
     }
 
-    private void Start()
-    {
-        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
-    }
-
     private void Update()
     {
         //Abstraction
         ConstrainPlayerPosition();
 
-        if (gameManager.gameOver == false)
+        if (GameManager.Manager.gameOver == false)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
@@ -44,7 +38,7 @@ public class PlayerController : MonoBehaviour
     // Moves the player
     void PlayerMovement()
     {
-        if (gameManager.gameOver == false)
+        if (GameManager.Manager.gameOver == false)
         {
             float horizontalInput = Input.GetAxis("Horizontal");
             float verticalInput = Input.GetAxis("Vertical");

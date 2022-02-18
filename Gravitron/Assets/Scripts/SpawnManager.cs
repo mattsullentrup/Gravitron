@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
+    public static SpawnManager Instance { get; private set; }
     private float spawnRangeX = 10;
     private float spawnPosZ = 8;
     private float spawnPosY = 1.5f;
@@ -11,8 +12,6 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private float enemyTwoSpawnInterval = 7f;
     [SerializeField] private float powerupSpawnInterval = 20f;
     [SerializeField] private float asteroidSpawnInterval = 9f;
-    [SerializeField] public static SpawnManager Instance;
-
     [SerializeField] private GameObject enemyOnePrefab;
     [SerializeField] private GameObject enemyTwoPrefab;
     [SerializeField] private GameObject asteroidPrefab;
@@ -28,10 +27,7 @@ public class SpawnManager : MonoBehaviour
         }
         else
         {
-
             Instance = this;
-            //DontDestroyOnLoad(gameObject);
-
         }
     }
 
@@ -77,6 +73,4 @@ public class SpawnManager : MonoBehaviour
             GameObject newPowerup = Instantiate(powerupPrefab, spawnPos, Quaternion.identity);
         }
     }
-
-
 }

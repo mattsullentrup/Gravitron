@@ -7,46 +7,33 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance;
+    public static GameManager Manager { get; private set; } //Encapsulation
     public GameObject titleScreen;
     public Text scoreText;
     public Text gameOverText;
     public Button restartButton;
     public bool gameOver;
-    private int score;
-    private GameObject player;
-    public SpawnManager spawnManager;
     public GameObject playerHealthThree;
     public GameObject playerHealthTwo;
     public GameObject playerHealthOne;
     public GameObject healthUI;
+    private int score;
+    private GameObject player;
 
     private void Awake()
     {
         gameOver = true;
 
-        if (Instance != null)
+        if (Manager != null)
         {
             Destroy(gameObject);
             return;
         }
         else
         {
-
-            Instance = this;
-            //DontDestroyOnLoad(gameObject);
-
+            Manager = this;
         }
     }
-
-    //private void Awake()
-    //{
-        
-    //    //titleScreen.SetActive(false);
-    //    //scoreText.gameObject.SetActive(false);
-    //    //restartButton.gameObject.SetActive(false);
-    //    //gameOverText.gameObject.SetActive(false);
-    //}
 
     private void Start()
     {
@@ -57,6 +44,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        //Abstraction
         GameOver();
         CheckPlayerHealth();
     }
@@ -92,10 +80,10 @@ public class GameManager : MonoBehaviour
         titleScreen.SetActive(false);
         scoreText.gameObject.SetActive(true);
         healthUI.SetActive(true);
-        StartCoroutine(spawnManager.SpawnEnemyOne());
-        StartCoroutine(spawnManager.SpawnEnemyTwo());
-        StartCoroutine(spawnManager.SpawnPowerup());
-        StartCoroutine(spawnManager.SpawnAsteroid());
+        StartCoroutine(SpawnManager.Instance.SpawnEnemyOne());
+        StartCoroutine(SpawnManager.Instance.SpawnEnemyTwo());
+        StartCoroutine(SpawnManager.Instance.SpawnPowerup());
+        StartCoroutine(SpawnManager.Instance.SpawnAsteroid());
     }
 
     private void CheckPlayerHealth()
