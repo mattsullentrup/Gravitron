@@ -889,14 +889,14 @@ RectTransform:
   m_GameObject: {fileID: 725696411}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children: []
   m_Father: {fileID: 189846771}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 43, y: 88}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 48, y: -91.1}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &725696413
@@ -1345,10 +1345,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7add1649a792487393f7fb8c887cc54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyOneSpawnInterval: 3
-  enemyTwoSpawnInterval: 6
+  spawnRangeX: 7
+  spawnPosZ: 8
+  spawnPosY: 1.5
+  enemyOneSpawnInterval: 4
+  enemyTwoSpawnInterval: 7
   powerupSpawnInterval: 20
-  asteroidSpawnInterval: 8
+  asteroidSpawnInterval: 9
   enemyOnePrefab: {fileID: 2839710364907366730, guid: 0af32f7722b3d4709ae224515010d23f, type: 3}
   enemyTwoPrefab: {fileID: 139020, guid: 02216b8dfa64dd14eb1fc6953f4c9c65, type: 3}
   asteroidPrefab: {fileID: 2298816303533460105, guid: b606a444d7eb447f7af2678e7d28ce2d, type: 3}
@@ -1637,7 +1640,7 @@ RectTransform:
   m_GameObject: {fileID: 1248426969}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 811225234}
   - {fileID: 1296509610}
@@ -1948,7 +1951,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 80}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &5148552328610400026
@@ -2013,6 +2016,14 @@ PrefabInstance:
     - target: {fileID: 5148552329898852720, guid: a6a33d2a01f5643be86de8a92688f6b2, type: 3}
       propertyPath: speed
       value: 1100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5148552329898852720, guid: a6a33d2a01f5643be86de8a92688f6b2, type: 3}
+      propertyPath: xBound
+      value: 8.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5148552329898852720, guid: a6a33d2a01f5643be86de8a92688f6b2, type: 3}
+      propertyPath: zBound
+      value: 4.7
       objectReference: {fileID: 0}
     - target: {fileID: 5148552329898852720, guid: a6a33d2a01f5643be86de8a92688f6b2, type: 3}
       propertyPath: laserPrefab

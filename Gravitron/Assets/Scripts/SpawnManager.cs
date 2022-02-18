@@ -5,9 +5,9 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     public static SpawnManager Instance { get; private set; }
-    private float spawnRangeX = 10;
-    private float spawnPosZ = 8;
-    private float spawnPosY = 1.5f;
+    [SerializeField] private float spawnRangeX = 8;
+    [SerializeField] private float spawnPosZ = 8;
+    [SerializeField] private float spawnPosY = 1.5f;
     [SerializeField] private float enemyOneSpawnInterval = 4f;
     [SerializeField] private float enemyTwoSpawnInterval = 7f;
     [SerializeField] private float powerupSpawnInterval = 20f;
