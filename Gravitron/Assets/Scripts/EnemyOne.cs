@@ -27,9 +27,6 @@ public class EnemyOne : MonoBehaviour
     {
         Explode();
         EnemyMovement();
-
-        Debug.DrawRay(transform.position, directionToFace, Color.green);
-
         transform.rotation = rotation;
     }
 
@@ -37,7 +34,7 @@ public class EnemyOne : MonoBehaviour
     {
         if (enemyHealth <= 0)
         {
-            gameObject.SetActive(false);
+            Destroy(gameObject);
             gameManager.UpdateScore(pointValue);
         }
     }
