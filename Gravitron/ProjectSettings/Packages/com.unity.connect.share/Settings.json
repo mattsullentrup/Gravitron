@@ -6,7 +6,17 @@
             {
                 "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "buildOutputDirList",
-                "value": "{\"m_Value\":\"/Users/mattsullentrup/Unity Projects/Create With Code/Builds/Third Gravitron Build v1.1 2:17:21;/Users/mattsullentrup/Unity Projects/Create With Code/Builds/New Gravitron WebGL Build (v1.1) 2:17:21;/Users/mattsullentrup/Unity Projects/Create With Code/Builds/Gravitron WebGL Build 2:17:21;;;;;;;\"}"
+                "value": "{\"m_Value\":\"/Users/mattsullentrup/Unity Projects/Create With Code/Builds/Gravitron/5 gzip fallback gravitron;/Users/mattsullentrup/Unity Projects/Create With Code/Builds/Gravitron/4 brotli gravitron;/Users/mattsullentrup/Unity Projects/Create With Code/Builds/Gravitron/3 brotli gravitron;/Users/mattsullentrup/Unity Projects/Create With Code/Builds/Gravitron/2 gravitron;/Users/mattsullentrup/Unity Projects/Create With Code/Builds/Gravitron/1 gravitron;/Users/mattsullentrup/Unity Projects/Create With Code/Builds/Gravitron/Gravitron v1.3 WebGL 2:17:21;/Users/mattsullentrup/Unity Projects/Create With Code/Builds/Gravitron/Gravitron v1.2 2:17:21;/Users/mattsullentrup/Unity Projects/Create With Code/Builds/Gravitron/Fifth Gravitron Build (compression disabled with fallback);/Users/mattsullentrup/Unity Projects/Create With Code/Builds/Gravitron/Fourth Gravitron (compression disabled no fallback);/Users/mattsullentrup/Unity Projects/Create With Code/Builds/Third Gravitron Build v1.1 2:17:21\"}"
+            },
+            {
+                "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "key": "firstTime",
+                "value": "{\"m_Value\":false}"
+            },
+            {
+                "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "key": "autoPublish",
+                "value": "{\"m_Value\":true}"
             }
         ]
     }
