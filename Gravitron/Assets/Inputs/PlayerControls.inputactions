@@ -11,7 +11,8 @@
                     "id": "61659dfd-f8a6-45d2-bd40-6fa090e98a43",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Move",
@@ -19,7 +20,8 @@
                     "id": "162910b9-958c-4780-b943-8662bb79e54c",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
