@@ -12,40 +12,78 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float xBound = 14f;
     [SerializeField] private GameObject laserPrefab;
     [SerializeField] private Transform projectileSpawnPoint;
-    
+
+    public InputAction fire;
+    public InputAction move;
+
+    private float movementX;
+    private float movementY;
+
+    PlayerControls controls;
+    Vector2 moveDirection = Vector2.zero;
+
     void Awake()
     {
+        controls = new PlayerControls();
+        
         playerRb = GetComponent<Rigidbody>();
+    }
+
+    void OnEnable()
+    {
+        move = controls.Player.Move;
+        move.Enable();
+
+        fire = controls.Player.Fire;
+        fire.Enable();
+        fire.performed += Fire;
+    }
+
+    void OnDisable()
+    {
+        move.Disable();
+        fire.Disable();
     }
 
     private void Update()
     {
         //Abstraction
         ConstrainPlayerPosition();
-        Shoot();
+        //Fire();
     }
 
     private void FixedUpdate()
     {
-        PlayerMovement();
+        OnMove();
+    }
+
+    private void OnMove()
+    {
+        Vector2 moveDirection = move.ReadValue<Vector2>();
+
+        movementX = moveDirection.x;
+        movementY = moveDirection.y;
+
+        Vector3 movement = new Vector3(movementX, 0.0f, movementY);
+        playerRb.AddForce(playerSpeed * Time.deltaTime * movement);
     }
 
     // Moves the player
-    void PlayerMovement()
-    {
-        if (GameManager.Manager.gameOver == false)
-        {
-            float horizontalInput = Input.GetAxis("Horizontal");
-            float verticalInput = Input.GetAxis("Vertical");
+    //void PlayerMovement()
+    //{
+    //    if (GameManager.Manager.gameOver == false)
+    //    {
+    //        float horizontalInput = Input.GetAxis("Horizontal");
+    //        float verticalInput = Input.GetAxis("Vertical");
 
-            Vector3 movement = playerSpeed * Time.fixedDeltaTime * new Vector3(horizontalInput, 0, verticalInput);
-            playerRb.AddForce(movement);
-        }
-    }
+    //        Vector3 movement = playerSpeed * Time.fixedDeltaTime * new Vector3(horizontalInput, 0, verticalInput);
+    //        playerRb.AddForce(movement);
+    //    }
+    //}
 
-    private void Shoot()
+    private void Fire(InputAction.CallbackContext context)
     {
-        if (Input.GetKeyDown(KeyCode.Space) && GameManager.Manager.gameOver == false && launchAvailable == true)
+        if (GameManager.Manager.gameOver == false && launchAvailable == true)
         {
             // Launch a projectile from the player
             Instantiate(laserPrefab, projectileSpawnPoint.position, laserPrefab.transform.rotation);
