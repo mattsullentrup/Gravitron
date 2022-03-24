@@ -7,8 +7,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Manager { get; private set; } //Encapsulation
     public GameObject titleScreen;
-    public Text scoreText;
-    public Text gameOverText;
+    public TMPro.TMP_Text scoreText;
+    public TMPro.TMP_Text gameOverText;
     public Button restartButton;
     public bool gameOver;
     public GameObject playerHealthThree;
