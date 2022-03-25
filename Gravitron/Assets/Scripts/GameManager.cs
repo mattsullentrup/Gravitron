@@ -6,10 +6,10 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Manager { get; private set; } //Encapsulation
-    public GameObject titleScreen;
+    //public GameObject titleScreen;
     public TMPro.TMP_Text scoreText;
-    public TMPro.TMP_Text gameOverText;
-    public Button restartButton;
+    //public TMPro.TMP_Text gameOverText;
+    //public Button restartButton;
     public bool gameOver;
     public GameObject playerHealthThree;
     public GameObject playerHealthTwo;
@@ -18,9 +18,11 @@ public class GameManager : MonoBehaviour
     private int score;
     private GameObject player;
 
+    public GameObject gameOverScreen;
+
     private void Awake()
     {
-        gameOver = true;
+        //gameOver = true;
 
         if (Manager != null)
         {
@@ -58,8 +60,9 @@ public class GameManager : MonoBehaviour
         if (player.GetComponent<PlayerHealth>().currentPlayerHealth <= 0)
         {
             gameOver = true;
-            restartButton.gameObject.SetActive(true);
-            gameOverText.gameObject.SetActive(true);
+            //restartButton.gameObject.SetActive(true);
+            //gameOverText.gameObject.SetActive(true);
+            gameOverScreen.SetActive(true);
             player.SetActive(false);
             StopAllCoroutines();
         }
@@ -67,7 +70,7 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void StartGame()
@@ -75,9 +78,9 @@ public class GameManager : MonoBehaviour
         gameOver = false;
         score = 0;
         UpdateScore(0);
-        titleScreen.SetActive(false);
-        scoreText.gameObject.SetActive(true);
-        healthUI.SetActive(true);
+        //titleScreen.SetActive(false);
+        //scoreText.gameObject.SetActive(true);
+        //healthUI.SetActive(true);
         StartCoroutine(SpawnManager.Instance.SpawnEnemyOne());
         StartCoroutine(SpawnManager.Instance.SpawnEnemyTwo());
         StartCoroutine(SpawnManager.Instance.SpawnPowerup());
