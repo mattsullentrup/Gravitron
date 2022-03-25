@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        //gameOver = true;
+        gameOverScreen.SetActive(false);
 
         if (Manager != null)
         {
@@ -33,6 +33,9 @@ public class GameManager : MonoBehaviour
         {
             Manager = this;
         }
+
+        DontDestroyOnLoad(Manager);
+
     }
 
     private void Start()
@@ -70,6 +73,7 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
+        //gameOverScreen.SetActive(false);
         SceneManager.LoadScene("MainMenu");
     }
 

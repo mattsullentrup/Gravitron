@@ -71,17 +71,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""463da511-450b-411f-b9fa-4f96ec41f0e7"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""Fire"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""f344ff9a-aabd-4a8e-9132-f4afc9230cad"",
                     ""path"": ""<Gamepad>/dpad"",
                     ""interactions"": """",
