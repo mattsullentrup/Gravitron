@@ -22,8 +22,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        gameOverScreen.SetActive(false);
-
+        
         if (Manager != null)
         {
             Destroy(gameObject);
@@ -41,7 +40,8 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         player = GameObject.Find("Player");
-        
+        player.SetActive(true);
+
         UpdateScore(0);
     }
 
@@ -65,20 +65,15 @@ public class GameManager : MonoBehaviour
             gameOver = true;
             //restartButton.gameObject.SetActive(true);
             //gameOverText.gameObject.SetActive(true);
-            gameOverScreen.SetActive(true);
+            //gameOverScreen.SetActive(true);
             player.SetActive(false);
             StopAllCoroutines();
         }
     }
 
-    public void RestartGame()
-    {
-        //gameOverScreen.SetActive(false);
-        SceneManager.LoadScene("MainMenu");
-    }
-
     public void StartGame()
     {
+        player.SetActive(true);
         gameOver = false;
         score = 0;
         UpdateScore(0);
