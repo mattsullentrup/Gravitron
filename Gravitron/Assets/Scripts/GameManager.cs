@@ -14,7 +14,6 @@ public class GameManager : MonoBehaviour
     public GameObject playerHealthThree;
     public GameObject playerHealthTwo;
     public GameObject playerHealthOne;
-    public GameObject healthUI;
     private int score;
     private GameObject player;
 
@@ -35,10 +34,19 @@ public class GameManager : MonoBehaviour
 
         DontDestroyOnLoad(Manager);
 
+        
     }
+
+    //private void OnEnable()
+    //{
+    //    playerHealthOne = GameObject.Find("Player Health One");
+    //    playerHealthTwo = GameObject.Find("Player Health Two");
+    //    playerHealthThree = GameObject.Find("Player Health Three");
+    //}
 
     private void Start()
     {
+        
         player = GameObject.Find("Player");
         player.SetActive(true);
 
@@ -65,9 +73,15 @@ public class GameManager : MonoBehaviour
             gameOver = true;
             //restartButton.gameObject.SetActive(true);
             //gameOverText.gameObject.SetActive(true);
-            //gameOverScreen.SetActive(true);
+            gameOverScreen.SetActive(true);
             player.SetActive(false);
             StopAllCoroutines();
+        }
+
+        else
+        {
+            gameOverScreen.SetActive(false);
+            player.SetActive(true);
         }
     }
 
