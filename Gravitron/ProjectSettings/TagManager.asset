@@ -9,9 +9,6 @@ TagManager:
   - Powerup
   - Enemy Two
   - Laser
-  - Game Over
-  - Game UI
-  - Main Menu Screen
   layers:
   - Default
   - TransparentFX
