@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour
             gameOver = true;
             //restartButton.gameObject.SetActive(true);
             //gameOverText.gameObject.SetActive(true);
-            //gameOverScreen.SetActive(true);
+            gameOverScreen.SetActive(true);
             player.SetActive(false);
             StopAllCoroutines();
         }
