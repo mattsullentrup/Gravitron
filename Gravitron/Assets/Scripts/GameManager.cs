@@ -77,9 +77,9 @@ public class GameManager : MonoBehaviour
         gameOver = false;
         score = 0;
         UpdateScore(0);
-        //titleScreen.SetActive(false);
-        //scoreText.gameObject.SetActive(true);
-        //healthUI.SetActive(true);
+        playerHealthThree.SetActive(true);
+        playerHealthTwo.SetActive(true);
+        playerHealthOne.SetActive(true);
         StartCoroutine(SpawnManager.Instance.SpawnEnemyOne());
         StartCoroutine(SpawnManager.Instance.SpawnEnemyTwo());
         StartCoroutine(SpawnManager.Instance.SpawnPowerup());

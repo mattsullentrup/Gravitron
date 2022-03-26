@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController Instance { get; set; }
+
     public float playerSpeed = 1100f;
     private Rigidbody playerRb;
     private bool launchAvailable = true;
@@ -20,13 +22,24 @@ public class PlayerController : MonoBehaviour
     private float movementY;
 
     PlayerControls controls;
-    Vector2 moveDirection = Vector2.zero;
 
     void Awake()
     {
         controls = new PlayerControls();
         
         playerRb = GetComponent<Rigidbody>();
+
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        else
+        {
+            Instance = this;
+        }
+
+        DontDestroyOnLoad(Instance);
     }
 
     void OnEnable()
@@ -67,19 +80,6 @@ public class PlayerController : MonoBehaviour
         Vector3 movement = new Vector3(movementX, 0.0f, movementY);
         playerRb.AddForce(playerSpeed * Time.deltaTime * movement);
     }
-
-    // Moves the player
-    //void PlayerMovement()
-    //{
-    //    if (GameManager.Manager.gameOver == false)
-    //    {
-    //        float horizontalInput = Input.GetAxis("Horizontal");
-    //        float verticalInput = Input.GetAxis("Vertical");
-
-    //        Vector3 movement = playerSpeed * Time.fixedDeltaTime * new Vector3(horizontalInput, 0, verticalInput);
-    //        playerRb.AddForce(movement);
-    //    }
-    //}
 
     private void Fire(InputAction.CallbackContext context)
     {
