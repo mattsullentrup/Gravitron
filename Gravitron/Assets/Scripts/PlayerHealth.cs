@@ -23,7 +23,7 @@ public class PlayerHealth : MonoBehaviour
     private void Awake()
     {
         // Initialiase the player's current health
-        ResetHealthAndPosition();
+        currentPlayerHealth = healthInitial;
     }
 
     private void Start()
@@ -32,12 +32,16 @@ public class PlayerHealth : MonoBehaviour
     }
 
     // Sets the player's current health back to its initial value
-    public void ResetHealthAndPosition()
+    public void ResetPlayer()
     {
         // Initialise the player's current health
         currentPlayerHealth = healthInitial;
 
         gameObject.transform.position = new Vector3(0, 1.7f, -4.5f);
+
+        hasPowerup = false;
+        powerupIndicator.SetActive(false);
+        playerController.playerSpeed = 1100f;
     }
 
     private void OnTriggerEnter(Collider other)

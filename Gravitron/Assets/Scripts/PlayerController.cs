@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine.InputSystem;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -26,7 +27,7 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         controls = new PlayerControls();
-        
+
         playerRb = GetComponent<Rigidbody>();
 
         if (Instance != null)

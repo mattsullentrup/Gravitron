@@ -63,8 +63,6 @@ public class GameManager : MonoBehaviour
         if (player.GetComponent<PlayerHealth>().currentPlayerHealth <= 0)
         {
             gameOver = true;
-            //restartButton.gameObject.SetActive(true);
-            //gameOverText.gameObject.SetActive(true);
             gameOverScreen.SetActive(true);
             player.SetActive(false);
             StopAllCoroutines();
