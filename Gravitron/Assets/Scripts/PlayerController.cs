@@ -79,8 +79,8 @@ public class PlayerController : MonoBehaviour
         movementY = moveDirection.y;
 
         Vector3 movement = new Vector3(movementX, 0.0f, movementY);
-        playerRb.AddForce(playerSpeed * Time.deltaTime * movement);
-        //playerRb.MovePosition(transform.position + (playerSpeed * Time.deltaTime * movement));
+        //playerRb.AddForce(playerSpeed * Time.deltaTime * movement);
+        playerRb.MovePosition(transform.position + (playerSpeed * Time.deltaTime * movement));
     }
 
     private void Fire(InputAction.CallbackContext context)

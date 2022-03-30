@@ -20,7 +20,6 @@ public class PlayerHealth : MonoBehaviour
     private Rigidbody playerRb;
     [SerializeField] private int healthInitial = 3;
     [SerializeField] private GameObject powerupIndicator;
-    [SerializeField] private float initialPlayerSpeed = 1100f;
 
     private void Awake()
     {
@@ -41,11 +40,11 @@ public class PlayerHealth : MonoBehaviour
         // Initialise the player's current health
         currentPlayerHealth = healthInitial;
 
-        gameObject.transform.position = new Vector3(0, 1.7f, -4.5f);
+        playerRb.position = new Vector3(0, 1.7f, -4.5f);
 
         hasPowerup = false;
         powerupIndicator.SetActive(false);
-        playerController.playerSpeed = initialPlayerSpeed;
+        playerController.playerSpeed = 1100f;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -81,7 +80,7 @@ public class PlayerHealth : MonoBehaviour
                 yield return new WaitForSeconds(7);
                 hasPowerup = false;
                 powerupIndicator.SetActive(false);
-                playerController.playerSpeed = initialPlayerSpeed;
+                playerController.playerSpeed = 1100f;
             }
         }
     }
