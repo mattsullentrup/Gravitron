@@ -1402,6 +1402,10 @@ PrefabInstance:
       value: Move
       objectReference: {fileID: 0}
     - target: {fileID: 5148552329898852720, guid: a6a33d2a01f5643be86de8a92688f6b2, type: 3}
+      propertyPath: playerSpeed
+      value: 1100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5148552329898852720, guid: a6a33d2a01f5643be86de8a92688f6b2, type: 3}
       propertyPath: laserWaitTime
       value: 0.15
       objectReference: {fileID: 0}
