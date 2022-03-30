@@ -6,7 +6,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637837552840000000
+      ticks: 637840873720000000
     m_Hash: 3153108898
   m_LockFileStatus:
     m_FilePath: /Users/mattsullentrup/Unity Projects/Personal Projects/Projects/Gravitron
@@ -15,7 +15,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637837552840000000
+      ticks: 637840873720000000
     m_Hash: 1596673129
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
@@ -425,6 +425,7 @@ m_PackageAssets:
         - 2.0.11
         - 2.0.12
         - 2.0.14
+        - 2.0.15
         compatible:
         - 1.0.2
         - 1.0.3
@@ -443,7 +444,8 @@ m_PackageAssets:
         - 2.0.11
         - 2.0.12
         - 2.0.14
-        verified: 2.0.14
+        - 2.0.15
+        verified: 2.0.15
       dependencies:
       - name: com.unity.test-framework
         version: 1.1.9

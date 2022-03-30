@@ -1,3 +1,10 @@
+/*
+/*/
+
+!.gitignore
+!/Assets/
+!/ProjectSettings/
+
 [Ll]ibrary/
 [Tt]emp/
 [Oo]bj/
@@ -35,3 +42,11 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+Gravitron/Library/ArtifactDB
+Gravitron/Library/SourceAssetDB
+Gravitron/Library/SourceAssetDB
+Gravitron/Library/ArtifactDB
+Gravitron/Library/ArtifactDB
+Gravitron/Library/ArtifactDB
+Gravitron/Library/ArtifactDB
+Gravitron/Library/ArtifactDB
