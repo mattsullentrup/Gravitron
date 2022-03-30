@@ -17,13 +17,15 @@ public class PlayerHealth : MonoBehaviour
     public int currentPlayerHealth;
     public bool hasPowerup = false;
     private PlayerController playerController;
-    private Rigidbody playerRb;
+    //private Rigidbody playerRb;
     [SerializeField] private int healthInitial = 3;
     [SerializeField] private GameObject powerupIndicator;
+    private Vector3 startPosition;
+    private float initialPlayerspeed = 1200f;
 
     private void Awake()
     {
-        playerRb = GetComponent<Rigidbody>();
+        startPosition = transform.position;
 
         // Initialiase the player's current health
         currentPlayerHealth = healthInitial;
@@ -40,11 +42,11 @@ public class PlayerHealth : MonoBehaviour
         // Initialise the player's current health
         currentPlayerHealth = healthInitial;
 
-        playerRb.position = new Vector3(0, 1.7f, -4.5f);
+        transform.position = startPosition;
 
         hasPowerup = false;
         powerupIndicator.SetActive(false);
-        playerController.playerSpeed = 5f;
+        playerController.playerSpeed = initialPlayerspeed;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -54,7 +56,7 @@ public class PlayerHealth : MonoBehaviour
             if (other.gameObject.CompareTag("Powerup"))
             {
                 hasPowerup = true;
-                playerController.playerSpeed = 10f;
+                playerController.playerSpeed += 1000f;
                 powerupIndicator.SetActive(true);
                 other.gameObject.SetActive(false);
                 StartCoroutine(PowerupCountdownRoutine());
@@ -80,7 +82,7 @@ public class PlayerHealth : MonoBehaviour
                 yield return new WaitForSeconds(7);
                 hasPowerup = false;
                 powerupIndicator.SetActive(false);
-                playerController.playerSpeed = 5f;
+                playerController.playerSpeed = initialPlayerspeed;
             }
         }
     }

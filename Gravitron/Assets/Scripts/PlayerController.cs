@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     public static PlayerController Instance { get; set; }
 
-    public float playerSpeed = 5f;
+    public float playerSpeed = 1100f;
     private Rigidbody playerRb;
     private bool launchAvailable = true;
     [SerializeField] private float laserWaitTime = 0.25f;
@@ -79,8 +79,9 @@ public class PlayerController : MonoBehaviour
         movementY = moveDirection.y;
 
         Vector3 movement = new Vector3(movementX, 0.0f, movementY);
-        //playerRb.AddForce(playerSpeed * Time.deltaTime * movement);
-        playerRb.MovePosition(transform.position + (playerSpeed * Time.deltaTime * movement));
+        playerRb.AddForce(playerSpeed * Time.deltaTime * movement);
+        //playerRb.MovePosition(transform.position + (playerSpeed * Time.deltaTime * movement));
+        //transform.Translate(playerSpeed * Time.deltaTime * movement);
     }
 
     private void Fire(InputAction.CallbackContext context)

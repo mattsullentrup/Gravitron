@@ -556,18 +556,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: PlayGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1414793174}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -1403,7 +1391,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5148552329898852720, guid: a6a33d2a01f5643be86de8a92688f6b2, type: 3}
       propertyPath: playerSpeed
-      value: 5
+      value: 1200
       objectReference: {fileID: 0}
     - target: {fileID: 5148552329898852720, guid: a6a33d2a01f5643be86de8a92688f6b2, type: 3}
       propertyPath: laserWaitTime
