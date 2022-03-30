@@ -44,7 +44,7 @@ public class PlayerHealth : MonoBehaviour
 
         hasPowerup = false;
         powerupIndicator.SetActive(false);
-        playerController.playerSpeed = 1100f;
+        playerController.playerSpeed = 5f;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -54,7 +54,7 @@ public class PlayerHealth : MonoBehaviour
             if (other.gameObject.CompareTag("Powerup"))
             {
                 hasPowerup = true;
-                playerController.playerSpeed += 1000f;
+                playerController.playerSpeed = 10f;
                 powerupIndicator.SetActive(true);
                 other.gameObject.SetActive(false);
                 StartCoroutine(PowerupCountdownRoutine());
@@ -80,7 +80,7 @@ public class PlayerHealth : MonoBehaviour
                 yield return new WaitForSeconds(7);
                 hasPowerup = false;
                 powerupIndicator.SetActive(false);
-                playerController.playerSpeed = 1100f;
+                playerController.playerSpeed = 5f;
             }
         }
     }

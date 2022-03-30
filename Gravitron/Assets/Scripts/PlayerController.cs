@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     public static PlayerController Instance { get; set; }
 
-    public float playerSpeed = 1100f;
+    public float playerSpeed = 5f;
     private Rigidbody playerRb;
     private bool launchAvailable = true;
     [SerializeField] private float laserWaitTime = 0.25f;
