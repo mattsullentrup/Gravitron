@@ -8,10 +8,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Manager { get; set; } //Encapsulation
-    //public GameObject titleScreen;
     public TMPro.TMP_Text scoreText;
-    //public TMPro.TMP_Text gameOverText;
-    //public Button restartButton;
     public bool gameOver;
     public GameObject playerHealthThree;
     public GameObject playerHealthTwo;
@@ -60,7 +57,7 @@ public class GameManager : MonoBehaviour
         scoreText.text = "Score: " + score;
     }
 
-    private void GameOver()
+    public void GameOver()
     {
         if (player.GetComponent<PlayerHealth>().currentPlayerHealth <= 0)
         {

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PauseManager : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class PauseManager : MonoBehaviour
     PauseAction action;
     public static bool paused = false;
     public GameObject pauseMenu;
+
+    public GameObject pauseFirstButtton;
 
     private void Awake()
     {
@@ -38,10 +41,14 @@ public class PauseManager : MonoBehaviour
     }
     public void PauseGame()
     {
-        //StopAllCoroutines();
         Time.timeScale = 0;
         paused = true;
         pauseMenu.SetActive(true);
+
+        //clear selected object
+        EventSystem.current.SetSelectedGameObject(null);
+        //set a new selected object
+        EventSystem.current.SetSelectedGameObject(pauseFirstButtton);
     }
 
     public void ResumeGame()
@@ -49,9 +56,5 @@ public class PauseManager : MonoBehaviour
         Time.timeScale = 1;
         paused = false;
         pauseMenu.SetActive(false);
-        //StartCoroutine(SpawnManager.Instance.SpawnEnemyOne());
-        //StartCoroutine(SpawnManager.Instance.SpawnEnemyTwo());
-        //StartCoroutine(SpawnManager.Instance.SpawnPowerup());
-        //StartCoroutine(SpawnManager.Instance.SpawnAsteroid());
     }
 }

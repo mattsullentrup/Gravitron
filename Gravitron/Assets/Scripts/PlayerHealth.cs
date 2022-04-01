@@ -16,12 +16,12 @@ public class PlayerHealth : MonoBehaviour
 
     public int currentPlayerHealth;
     public bool hasPowerup = false;
-    private PlayerController playerController;
+    //private PlayerController playerController;
     //private Rigidbody playerRb;
     [SerializeField] private int healthInitial = 3;
     [SerializeField] private GameObject powerupIndicator;
     private Vector3 startPosition;
-    private float initialPlayerspeed = 1200f;
+    [SerializeField]  private float initialPlayerspeed = 1200f;
 
     private void Awake()
     {
@@ -29,11 +29,6 @@ public class PlayerHealth : MonoBehaviour
 
         // Initialiase the player's current health
         currentPlayerHealth = healthInitial;
-    }
-
-    private void Start()
-    {
-        playerController = this.GetComponent<PlayerController>();
     }
 
     // Sets the player's current health back to its initial value
@@ -46,7 +41,7 @@ public class PlayerHealth : MonoBehaviour
 
         hasPowerup = false;
         powerupIndicator.SetActive(false);
-        playerController.playerSpeed = initialPlayerspeed;
+        PlayerController.Instance.playerSpeed = initialPlayerspeed;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -56,7 +51,7 @@ public class PlayerHealth : MonoBehaviour
             if (other.gameObject.CompareTag("Powerup"))
             {
                 hasPowerup = true;
-                playerController.playerSpeed += 1000f;
+                PlayerController.Instance.playerSpeed += 1000f;
                 powerupIndicator.SetActive(true);
                 other.gameObject.SetActive(false);
                 StartCoroutine(PowerupCountdownRoutine());
@@ -82,7 +77,7 @@ public class PlayerHealth : MonoBehaviour
                 yield return new WaitForSeconds(7);
                 hasPowerup = false;
                 powerupIndicator.SetActive(false);
-                playerController.playerSpeed = initialPlayerspeed;
+                PlayerController.Instance.playerSpeed = initialPlayerspeed;
             }
         }
     }
