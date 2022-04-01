@@ -18,6 +18,7 @@ public class EnemyTwo : EnemyOne //Inheritance
     {
         Explode();
         EnemyMovement();
+        DestroyOutOfBounds();
     }
 
     public override void EnemyMovement() //polymorphism

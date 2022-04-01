@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -5,7 +7,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Manager { get; private set; } //Encapsulation
+    public static GameManager Manager { get; set; } //Encapsulation
     //public GameObject titleScreen;
     public TMPro.TMP_Text scoreText;
     //public TMPro.TMP_Text gameOverText;

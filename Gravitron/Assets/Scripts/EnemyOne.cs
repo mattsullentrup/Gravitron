@@ -41,7 +41,7 @@ public class EnemyOne : MonoBehaviour
         transform.Translate(speed * Time.deltaTime * directionToFace, Space.World);
     }
 
-    private void DestroyOutOfBounds()
+    public void DestroyOutOfBounds()
     {
         // If object goes past the player's view in the game, remove that object
         if (transform.position.z < lowerBound)

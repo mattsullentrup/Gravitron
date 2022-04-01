@@ -6,7 +6,7 @@ public class PauseManager : MonoBehaviour
 {
 
     PauseAction action;
-    public bool paused = false;
+    public static bool paused = false;
     public GameObject pauseMenu;
 
     private void Awake()
@@ -38,6 +38,7 @@ public class PauseManager : MonoBehaviour
     }
     public void PauseGame()
     {
+        //StopAllCoroutines();
         Time.timeScale = 0;
         paused = true;
         pauseMenu.SetActive(true);
@@ -48,5 +49,9 @@ public class PauseManager : MonoBehaviour
         Time.timeScale = 1;
         paused = false;
         pauseMenu.SetActive(false);
+        //StartCoroutine(SpawnManager.Instance.SpawnEnemyOne());
+        //StartCoroutine(SpawnManager.Instance.SpawnEnemyTwo());
+        //StartCoroutine(SpawnManager.Instance.SpawnPowerup());
+        //StartCoroutine(SpawnManager.Instance.SpawnAsteroid());
     }
 }

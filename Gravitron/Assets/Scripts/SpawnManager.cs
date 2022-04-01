@@ -33,20 +33,21 @@ public class SpawnManager : MonoBehaviour
 
     public IEnumerator SpawnEnemyOne()
     {
-        while (true)
+        while (PauseManager.paused != true && GameManager.Manager.gameOver != true)
         {
-            yield return new WaitForSecondsRealtime(enemyOneSpawnInterval);
+            yield return new WaitForSeconds(enemyOneSpawnInterval);
             Vector3 spawnPos = new Vector3(Random.Range(-spawnRangeX, spawnRangeX), spawnPosY, spawnPosZ);
             GameObject newEnemyOne = Instantiate(enemyOnePrefab, spawnPos, Quaternion.identity);
             newEnemyOne.GetComponent<EnemyOne>().enemyHealth = 1;
+            //yield return new WaitForSecondsRealtime(enemyOneSpawnInterval);
         }
     }
 
     public IEnumerator SpawnEnemyTwo()
     {
-        while (true)
+        while (PauseManager.paused != true && GameManager.Manager.gameOver != true)
         {
-            yield return new WaitForSecondsRealtime(enemyTwoSpawnInterval);
+            yield return new WaitForSeconds(enemyTwoSpawnInterval);
             Vector3 spawnPos = new Vector3(Random.Range(-spawnRangeX, spawnRangeX), spawnPosY, spawnPosZ);
             GameObject newEnemyTwo = Instantiate(enemyTwoPrefab, spawnPos, Quaternion.identity);
             newEnemyTwo.GetComponent<EnemyTwo>().enemyHealth = 2;
@@ -55,22 +56,24 @@ public class SpawnManager : MonoBehaviour
 
     public IEnumerator SpawnAsteroid()
     {
-        while (true)
+        while (PauseManager.paused != true && GameManager.Manager.gameOver != true)
         {
-            yield return new WaitForSecondsRealtime(asteroidSpawnInterval);
+            yield return new WaitForSeconds(asteroidSpawnInterval);
             Vector3 spawnPos = new Vector3(Random.Range(-spawnRangeX, spawnRangeX), spawnPosY, spawnPosZ);
             GameObject newAsteroid = Instantiate(asteroidPrefab, spawnPos, Quaternion.identity);
             newAsteroid.GetComponent<Asteroid>().asteroidHealth = 3;
+            //yield return new WaitForSecondsRealtime(asteroidSpawnInterval);
         }
     }
 
     public IEnumerator SpawnPowerup()
     {
-        while (true)
+        while (PauseManager.paused != true && GameManager.Manager.gameOver != true)
         {
-            yield return new WaitForSecondsRealtime(powerupSpawnInterval);
+            yield return new WaitForSeconds(powerupSpawnInterval);
             Vector3 spawnPos = new Vector3(Random.Range(-spawnRangeX, spawnRangeX), spawnPosY, spawnPosZ);
             GameObject newPowerup = Instantiate(powerupPrefab, spawnPos, Quaternion.identity);
+            //yield return new WaitForSecondsRealtime(powerupSpawnInterval);
         }
     }
 }
