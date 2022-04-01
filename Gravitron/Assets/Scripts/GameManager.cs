@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 [System.Serializable]
 
@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     public GameObject healthUI;
     private int score;
     private GameObject player;
-
+    public GameObject gameOverFirstButton;
     public GameObject gameOverScreen;
 
     private void Awake()
@@ -65,6 +65,10 @@ public class GameManager : MonoBehaviour
             gameOverScreen.SetActive(true);
             player.SetActive(false);
             StopAllCoroutines();
+            //clear selected object
+            EventSystem.current.SetSelectedGameObject(null);
+            //set a new selected object
+            EventSystem.current.SetSelectedGameObject(gameOverFirstButton);
         }
     }
 

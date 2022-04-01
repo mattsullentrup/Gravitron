@@ -7,9 +7,9 @@ using UnityEngine.EventSystems;
 public class UIManager : MonoBehaviour
 {
     public GameObject optionsFirstButton, optionsClosedButton;
+    public GameObject mainMenuFirstButton;
     [SerializeField] private GameObject optionsMenu;
     [SerializeField] private GameObject mainMenu;
-    [SerializeField] private GameObject gameOverScreen;
 
     public void GameScene()
     {
@@ -18,6 +18,11 @@ public class UIManager : MonoBehaviour
 
     public void BackToMenu()
     {
+        //clear selected object
+        //EventSystem.current.SetSelectedGameObject(null);
+        //set a new selected object
+        EventSystem.current.SetSelectedGameObject(mainMenuFirstButton);
+
         GameManager.Manager.gameOver = true;
         GameManager.Manager.gameOverScreen.SetActive(false);
         SceneManager.LoadScene("MainMenu");
