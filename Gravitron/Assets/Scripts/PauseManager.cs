@@ -30,6 +30,7 @@ public class PauseManager : MonoBehaviour
     private void Start()
     {
         action.Pause.PauseGame.performed += _ => DeterminePause();
+        pauseMenu = GameObject.Find("Pause Menu");
     }
 
     private void DeterminePause()

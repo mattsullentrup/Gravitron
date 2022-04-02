@@ -6,20 +6,40 @@ using UnityEngine.EventSystems;
 
 public class UIManager : MonoBehaviour
 {
-    public GameObject optionsFirstButton, optionsClosedButton;
-    public GameObject mainMenuFirstButton;
+    public static UIManager UIManagerInstance { get; set; }
+    public GameObject optionsFirstButton, optionsClosedButton, mainMenuFirstButton;
     [SerializeField] private GameObject optionsMenu;
     [SerializeField] private GameObject mainMenu;
+    [SerializeField] private GameObject gameUI;
+
+    private void Awake()
+    {
+
+        if (UIManagerInstance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        else
+        {
+            UIManagerInstance = this;
+        }
+
+        //DontDestroyOnLoad(UIManagerInstance);
+
+    }
 
     public void GameScene()
     {
+        gameUI.SetActive(true);
+        mainMenu.SetActive(false);
         SceneManager.LoadScene("GameScene");
     }
 
     public void BackToMenu()
     {
         //clear selected object
-        //EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(null);
         //set a new selected object
         EventSystem.current.SetSelectedGameObject(mainMenuFirstButton);
 

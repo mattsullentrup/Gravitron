@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
 [System.Serializable]
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Manager { get; set; } //Encapsulation
-    public TMPro.TMP_Text scoreText;
+    public TMP_Text scoreText;
+    private int score;
     public bool gameOver;
     public GameObject playerHealthThree;
     public GameObject playerHealthTwo;
     public GameObject playerHealthOne;
     public GameObject healthUI;
-    private int score;
     private GameObject player;
     public GameObject gameOverFirstButton;
     public GameObject gameOverScreen;
@@ -32,15 +33,22 @@ public class GameManager : MonoBehaviour
             Manager = this;
         }
 
-        DontDestroyOnLoad(Manager);
+        //DontDestroyOnLoad(Manager);
 
     }
 
     private void Start()
     {
+        scoreText = GameObject.Find("Score Text").GetComponent<TextMeshPro>();
+        healthUI = GameObject.Find("HealthUI");
+        playerHealthThree = GameObject.Find("Player Health Three");
+        playerHealthTwo = GameObject.Find("Player Health Two");
+        playerHealthOne = GameObject.Find("Player Health One");
         player = GameObject.Find("Player");
+        gameOverFirstButton = GameObject.Find("Restart Button");
+        gameOverScreen = GameObject.Find("Game Over Screen");
         player.SetActive(true);
-
+        StartGame();
         UpdateScore(0);
     }
 

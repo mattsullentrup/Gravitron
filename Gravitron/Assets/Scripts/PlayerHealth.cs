@@ -31,6 +31,11 @@ public class PlayerHealth : MonoBehaviour
         currentPlayerHealth = healthInitial;
     }
 
+    private void Start()
+    {
+        powerupIndicator = GameObject.Find("Powerup Indicator");
+    }
+
     // Sets the player's current health back to its initial value
     public void ResetPlayer()
     {

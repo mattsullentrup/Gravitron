@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
             Instance = this;
         }
 
-        DontDestroyOnLoad(Instance);
+        //DontDestroyOnLoad(Instance);
     }
 
     void OnEnable()
