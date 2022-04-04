@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public TMP_Text scoreText;
     private int score;
     public bool gameOver;
+    public GameObject canvas;
     public GameObject playerHealthThree;
     public GameObject playerHealthTwo;
     public GameObject playerHealthOne;

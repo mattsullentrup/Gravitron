@@ -911,6 +911,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 4743319353815919650, guid: 0f217dcb522a34e8daf76f45628bb96a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4743319354106641869, guid: 0f217dcb522a34e8daf76f45628bb96a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -923,9 +927,21 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4743319354173496406, guid: 0f217dcb522a34e8daf76f45628bb96a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4743319354184009888, guid: 0f217dcb522a34e8daf76f45628bb96a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4743319354324986121, guid: 0f217dcb522a34e8daf76f45628bb96a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4743319354342017694, guid: 0f217dcb522a34e8daf76f45628bb96a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4743319354694977163, guid: 0f217dcb522a34e8daf76f45628bb96a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
@@ -937,6 +953,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4743319354783622419, guid: 0f217dcb522a34e8daf76f45628bb96a, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4743319354924520846, guid: 0f217dcb522a34e8daf76f45628bb96a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4743319354934179330, guid: 0f217dcb522a34e8daf76f45628bb96a, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
