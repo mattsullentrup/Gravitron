@@ -8,8 +8,8 @@ public class PauseManager : MonoBehaviour
 
     PauseAction action;
     public static bool paused = false;
+    public GameObject canvas;
     public GameObject pauseMenu;
-
     public GameObject pauseFirstButtton;
 
     private void Awake()
@@ -30,7 +30,9 @@ public class PauseManager : MonoBehaviour
     private void Start()
     {
         action.Pause.PauseGame.performed += _ => DeterminePause();
-        pauseMenu = GameObject.Find("Pause Menu");
+        canvas = GameObject.Find("Canvas");
+        pauseMenu = canvas.transform.GetChild(2).GetChild(0).gameObject;
+        pauseFirstButtton = pauseMenu.transform.GetChild(4).gameObject;
     }
 
     private void DeterminePause()

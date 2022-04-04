@@ -14,7 +14,7 @@ public class PlayerHealth : MonoBehaviour
     #endregion
 
 
-    public int currentPlayerHealth;
+    public static int currentPlayerHealth;
     public bool hasPowerup = false;
     //private PlayerController playerController;
     //private Rigidbody playerRb;
@@ -22,6 +22,8 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private GameObject powerupIndicator;
     private Vector3 startPosition;
     [SerializeField]  private float initialPlayerspeed = 1200f;
+
+    private GameObject canvas;
 
     private void Awake()
     {
@@ -33,7 +35,8 @@ public class PlayerHealth : MonoBehaviour
 
     private void Start()
     {
-        powerupIndicator = GameObject.Find("Powerup Indicator");
+        canvas = GameObject.Find("Canvas");
+        powerupIndicator = canvas.transform.GetChild(2).GetChild(2).gameObject;
     }
 
     // Sets the player's current health back to its initial value
