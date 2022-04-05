@@ -8,7 +8,7 @@ public class PauseManager : MonoBehaviour
     public static PauseManager pauseManagerInstance { get; set; }
     PauseAction action;
     public static bool paused = false;
-    public GameObject canvas;
+    private GameObject canvas;
     public GameObject pauseMenu;
     public GameObject pauseFirstButtton;
 

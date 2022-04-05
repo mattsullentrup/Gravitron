@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public enum ButtonType
 {
@@ -22,11 +23,19 @@ public class ButtonController : MonoBehaviour
     CanvasManager canvasManager;
     Button menuButton;
 
+    [SerializeField] private GameObject optionsFirstButton, optionsClosedButton, mainMenuFirstButton;
+    private GameObject canvas;
+
     private void Start()
     {
         menuButton = GetComponent<Button>();
         menuButton.onClick.AddListener(OnButtonClicked);
         canvasManager = CanvasManager.GetInstance();
+
+        canvas = GameObject.Find("Canvas");
+        optionsFirstButton = canvas.transform.GetChild(1).GetChild(1).gameObject;
+        mainMenuFirstButton = canvas.transform.GetChild(0).GetChild(1).gameObject;
+        optionsClosedButton = canvas.transform.GetChild(0).GetChild(2).gameObject;
     }
 
     void OnButtonClicked()
@@ -39,9 +48,15 @@ public class ButtonController : MonoBehaviour
                 break;
             case ButtonType.OPTIONS_BUTTON:
                 canvasManager.SwitchCanvas(CanvasType.OptionsMenu);
+
+                EventSystem.current.SetSelectedGameObject(null);
+                EventSystem.current.SetSelectedGameObject(optionsFirstButton);
                 break;
             case ButtonType.BACK_BUTTON:
                 canvasManager.SwitchCanvas(CanvasType.MainMenu);
+
+                EventSystem.current.SetSelectedGameObject(null);
+                EventSystem.current.SetSelectedGameObject(optionsClosedButton);
                 break;
             case ButtonType.QUIT_BUTTON:
                 Application.Quit();
@@ -54,6 +69,9 @@ public class ButtonController : MonoBehaviour
                 PauseManager.pauseManagerInstance.ResumeGame();
                 SceneManager.LoadScene("MainMenu");
                 canvasManager.SwitchCanvas(CanvasType.MainMenu);
+
+                EventSystem.current.SetSelectedGameObject(null);
+                EventSystem.current.SetSelectedGameObject(mainMenuFirstButton);
                 break;
             case ButtonType.RESTART_BUTTON:
                 canvasManager.SwitchCanvas(CanvasType.GameUI);
@@ -62,6 +80,9 @@ public class ButtonController : MonoBehaviour
             case ButtonType.GAMEOVER_MENU_BUTTON:
                 SceneManager.LoadScene("MainMenu");
                 canvasManager.SwitchCanvas(CanvasType.MainMenu);
+
+                EventSystem.current.SetSelectedGameObject(null);
+                EventSystem.current.SetSelectedGameObject(mainMenuFirstButton);
                 break;
             default:
                 break;
