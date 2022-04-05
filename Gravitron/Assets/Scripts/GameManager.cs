@@ -21,9 +21,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject gameOverFirstButton;
     public GameObject gameOverScreen;
 
-    //public int currentPlayerHealth;
-    //[SerializeField] private PlayerHealth playerHealth;
-
     private void Awake()
     {
         
@@ -37,34 +34,23 @@ public class GameManager : MonoBehaviour
             Manager = this;
         }
 
-        gameOver = false;
-
-        //DontDestroyOnLoad(Manager);
-
+        //gameOver = false;
         player = GameObject.Find("Player");
 
     }
 
     private void Start()
     {
-        //if (player != null)
-        //{
-            //player = GameObject.Find("Player");
-            //playerHealth = player.GetComponent<PlayerHealth>();
-            //currentPlayerHealth = playerHealth.currentPlayerHealth;
-        //}
 
-        
+
         canvas = GameObject.Find("Canvas");
         scoreText = canvas.transform.GetChild(2).GetChild(1).GetComponent<TextMeshProUGUI>();
         healthUI = GameObject.Find("HealthUI");
         playerHealthThree = healthUI.transform.GetChild(0).gameObject;
         playerHealthTwo = healthUI.transform.GetChild(1).gameObject;
         playerHealthOne = healthUI.transform.GetChild(2).gameObject;
-
         gameOverFirstButton = canvas.transform.GetChild(3).GetChild(1).gameObject;
         gameOverScreen = canvas.transform.GetChild(3).gameObject;
-        //player.SetActive(true);
         StartGame();
         UpdateScore(0);
     }
@@ -88,7 +74,7 @@ public class GameManager : MonoBehaviour
         {
             gameOver = true;
             gameOverScreen.SetActive(true);
-            //player.SetActive(false);
+            Destroy(player);
             StopAllCoroutines();
 
             //clear selected object
@@ -100,7 +86,6 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        //player.SetActive(true);
         gameOver = false;
         score = 0;
         UpdateScore(0);

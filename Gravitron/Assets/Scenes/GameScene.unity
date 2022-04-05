@@ -165,6 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b58281329736044f2a72c0841533fd98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
   pauseMenu: {fileID: 0}
   pauseFirstButtton: {fileID: 0}
 --- !u!4 &112044778
@@ -287,7 +288,7 @@ MonoBehaviour:
   spawnRangeX: 7
   spawnPosZ: 8
   spawnPosY: 1.5
-  enemyOneSpawnInterval: 4
+  enemyOneSpawnInterval: 1
   enemyTwoSpawnInterval: 7
   powerupSpawnInterval: 20
   asteroidSpawnInterval: 9
@@ -340,10 +341,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 0}
   gameOver: 0
+  canvas: {fileID: 0}
   playerHealthThree: {fileID: 0}
   playerHealthTwo: {fileID: 0}
   playerHealthOne: {fileID: 0}
   healthUI: {fileID: 0}
+  player: {fileID: 0}
   gameOverFirstButton: {fileID: 0}
   gameOverScreen: {fileID: 0}
 --- !u!4 &1310371519

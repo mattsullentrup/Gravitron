@@ -8,9 +8,10 @@ public enum ButtonType
     OPTIONS_BUTTON,
     BACK_BUTTON,
     QUIT_BUTTON,
-    GAMEOVERMENU_BUTTON,
-    PAUSEMENU_BUTTON,
-    RESTART_BUTTON
+    GAMEOVER_MENU_BUTTON,
+    PAUSE_MENU_BUTTON,
+    RESTART_BUTTON,
+    RESUME
 }
 
 [RequireComponent(typeof(Button))]
@@ -21,19 +22,11 @@ public class ButtonController : MonoBehaviour
     CanvasManager canvasManager;
     Button menuButton;
 
-    private GameObject pauseManager;
-    //private GameObject player;
-
     private void Start()
     {
         menuButton = GetComponent<Button>();
         menuButton.onClick.AddListener(OnButtonClicked);
         canvasManager = CanvasManager.GetInstance();
-
-        pauseManager = GameObject.Find("PauseSystem");
-        //player = GameObject.Find("Player");
-        //currentPlayerHealth = playerHealth.currentPlayerHealth;
-        //}
     }
 
     void OnButtonClicked()
@@ -41,7 +34,6 @@ public class ButtonController : MonoBehaviour
         switch (buttonType)
         {
             case ButtonType.START_GAME:
-                //Call other code that is necessary to start the game like levelManager.StartGame()
                 SceneManager.LoadScene("GameScene");
                 canvasManager.SwitchCanvas(CanvasType.GameUI);
                 break;
@@ -55,19 +47,21 @@ public class ButtonController : MonoBehaviour
                 Application.Quit();
                 Debug.Log("Quit");
                 break;
-            case ButtonType.GAMEOVERMENU_BUTTON:
-                GameManager.Manager.gameOverScreen.SetActive(false);
-                SceneManager.LoadScene("MainMenu");
-                canvasManager.SwitchCanvas(CanvasType.MainMenu);
+            case ButtonType.RESUME:
+                PauseManager.pauseManagerInstance.ResumeGame();
                 break;
-            case ButtonType.PAUSEMENU_BUTTON:
-                pauseManager.GetComponent<PauseManager>().ResumeGame();
+            case ButtonType.PAUSE_MENU_BUTTON:
+                PauseManager.pauseManagerInstance.ResumeGame();
                 SceneManager.LoadScene("MainMenu");
                 canvasManager.SwitchCanvas(CanvasType.MainMenu);
                 break;
             case ButtonType.RESTART_BUTTON:
                 canvasManager.SwitchCanvas(CanvasType.GameUI);
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                break;
+            case ButtonType.GAMEOVER_MENU_BUTTON:
+                SceneManager.LoadScene("MainMenu");
+                canvasManager.SwitchCanvas(CanvasType.MainMenu);
                 break;
             default:
                 break;

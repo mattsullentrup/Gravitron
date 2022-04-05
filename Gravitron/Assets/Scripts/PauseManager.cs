@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class PauseManager : MonoBehaviour
 {
-
+    public static PauseManager pauseManagerInstance { get; set; }
     PauseAction action;
     public static bool paused = false;
     public GameObject canvas;
@@ -14,6 +14,16 @@ public class PauseManager : MonoBehaviour
 
     private void Awake()
     {
+        if (pauseManagerInstance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        else
+        {
+            pauseManagerInstance = this;
+        }
+
         action = new PauseAction();
     }
 
