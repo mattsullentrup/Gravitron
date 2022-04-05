@@ -16,13 +16,10 @@ public class PlayerHealth : MonoBehaviour
 
     public static int currentPlayerHealth;
     public bool hasPowerup = false;
-    //private PlayerController playerController;
-    //private Rigidbody playerRb;
     [SerializeField] private int healthInitial = 3;
     [SerializeField] private GameObject powerupIndicator;
     private Vector3 startPosition;
     [SerializeField]  private float initialPlayerspeed = 1200f;
-
     private GameObject canvas;
 
     private void Awake()
@@ -40,16 +37,16 @@ public class PlayerHealth : MonoBehaviour
     }
 
     // Sets the player's current health back to its initial value
-    public void ResetPlayer()
+    public void ResetPlayerHealth()
     {
         // Initialise the player's current health
         currentPlayerHealth = healthInitial;
 
-        transform.position = startPosition;
+        //transform.position = startPosition;
 
-        hasPowerup = false;
-        powerupIndicator.SetActive(false);
-        PlayerController.Instance.playerSpeed = initialPlayerspeed;
+        //hasPowerup = false;
+        //powerupIndicator.SetActive(false);
+        //PlayerController.Instance.playerSpeed = initialPlayerspeed;
     }
 
     private void OnTriggerEnter(Collider other)

@@ -21,11 +21,19 @@ public class ButtonController : MonoBehaviour
     CanvasManager canvasManager;
     Button menuButton;
 
+    private GameObject pauseManager;
+    //private GameObject player;
+
     private void Start()
     {
         menuButton = GetComponent<Button>();
         menuButton.onClick.AddListener(OnButtonClicked);
         canvasManager = CanvasManager.GetInstance();
+
+        pauseManager = GameObject.Find("PauseSystem");
+        //player = GameObject.Find("Player");
+        //currentPlayerHealth = playerHealth.currentPlayerHealth;
+        //}
     }
 
     void OnButtonClicked()
@@ -45,22 +53,21 @@ public class ButtonController : MonoBehaviour
                 break;
             case ButtonType.QUIT_BUTTON:
                 Application.Quit();
+                Debug.Log("Quit");
                 break;
             case ButtonType.GAMEOVERMENU_BUTTON:
-                GameManager.Manager.gameOver = false;
                 GameManager.Manager.gameOverScreen.SetActive(false);
                 SceneManager.LoadScene("MainMenu");
                 canvasManager.SwitchCanvas(CanvasType.MainMenu);
                 break;
             case ButtonType.PAUSEMENU_BUTTON:
-                PauseManager.paused = false;
-                GameManager.Manager.gameOverScreen.SetActive(false);
+                pauseManager.GetComponent<PauseManager>().ResumeGame();
                 SceneManager.LoadScene("MainMenu");
                 canvasManager.SwitchCanvas(CanvasType.MainMenu);
                 break;
             case ButtonType.RESTART_BUTTON:
-                SceneManager.GetActiveScene();
                 canvasManager.SwitchCanvas(CanvasType.GameUI);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
                 break;
             default:
                 break;
