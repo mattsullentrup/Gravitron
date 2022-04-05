@@ -76,6 +76,10 @@ public class PlayerHealth : MonoBehaviour
                 other.gameObject.SetActive(false);
                 currentPlayerHealth -= 1;
             }
+            if (currentPlayerHealth == 0)
+            {
+                GameManager.Manager.GameOver();
+            }
 
             IEnumerator PowerupCountdownRoutine()
             {

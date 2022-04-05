@@ -2122,7 +2122,6 @@ GameObject:
   - component: {fileID: 637015611}
   - component: {fileID: 637015610}
   - component: {fileID: 637015609}
-  - component: {fileID: 637015612}
   - component: {fileID: 637015613}
   m_Layer: 5
   m_Name: Options Button
@@ -2233,19 +2232,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 637015607}
   m_CullTransparentMesh: 1
---- !u!114 &637015612
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 637015607}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 408f21f7b0587487a9530ac825f9375f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  desiredCanvasType: 3
 --- !u!114 &637015613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3712,7 +3698,6 @@ GameObject:
   - component: {fileID: 1103027564}
   - component: {fileID: 1103027563}
   - component: {fileID: 1103027562}
-  - component: {fileID: 1103027565}
   - component: {fileID: 1103027566}
   m_Layer: 5
   m_Name: Back Button
@@ -3823,19 +3808,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1103027560}
   m_CullTransparentMesh: 1
---- !u!114 &1103027565
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1103027560}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 408f21f7b0587487a9530ac825f9375f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  desiredCanvasType: 0
 --- !u!114 &1103027566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5218,7 +5190,6 @@ GameObject:
   - component: {fileID: 1648769321}
   - component: {fileID: 1648769320}
   - component: {fileID: 1648769319}
-  - component: {fileID: 1648769322}
   - component: {fileID: 1648769323}
   m_Layer: 5
   m_Name: Start Button
@@ -5329,19 +5300,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1648769317}
   m_CullTransparentMesh: 1
---- !u!114 &1648769322
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1648769317}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 408f21f7b0587487a9530ac825f9375f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  desiredCanvasType: 1
 --- !u!114 &1648769323
 MonoBehaviour:
   m_ObjectHideFlags: 0
