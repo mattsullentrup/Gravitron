@@ -28,15 +28,6 @@ public partial class @PauseAction : IInputActionCollection2, IDisposable
             ""id"": ""d1cc3cc2-b275-4092-879a-316b938040c0"",
             ""actions"": [
                 {
-                    ""name"": ""New action"",
-                    ""type"": ""Button"",
-                    ""id"": ""fa39b3e3-6d5a-476b-b520-9ac7e0ba2afb"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""PauseGame"",
                     ""type"": ""Button"",
                     ""id"": ""0464de99-2b2a-46bf-94cb-61ec5d96f195"",
@@ -47,17 +38,6 @@ public partial class @PauseAction : IInputActionCollection2, IDisposable
                 }
             ],
             ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""e2bfcd7a-af63-4eca-8681-7f74763491ea"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""New action"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
                 {
                     ""name"": """",
                     ""id"": ""9ce0a949-201d-45f2-92db-673da960055d"",
@@ -87,7 +67,6 @@ public partial class @PauseAction : IInputActionCollection2, IDisposable
 }");
         // Pause
         m_Pause = asset.FindActionMap("Pause", throwIfNotFound: true);
-        m_Pause_Newaction = m_Pause.FindAction("New action", throwIfNotFound: true);
         m_Pause_PauseGame = m_Pause.FindAction("PauseGame", throwIfNotFound: true);
     }
 
@@ -148,13 +127,11 @@ public partial class @PauseAction : IInputActionCollection2, IDisposable
     // Pause
     private readonly InputActionMap m_Pause;
     private IPauseActions m_PauseActionsCallbackInterface;
-    private readonly InputAction m_Pause_Newaction;
     private readonly InputAction m_Pause_PauseGame;
     public struct PauseActions
     {
         private @PauseAction m_Wrapper;
         public PauseActions(@PauseAction wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Newaction => m_Wrapper.m_Pause_Newaction;
         public InputAction @PauseGame => m_Wrapper.m_Pause_PauseGame;
         public InputActionMap Get() { return m_Wrapper.m_Pause; }
         public void Enable() { Get().Enable(); }
@@ -165,9 +142,6 @@ public partial class @PauseAction : IInputActionCollection2, IDisposable
         {
             if (m_Wrapper.m_PauseActionsCallbackInterface != null)
             {
-                @Newaction.started -= m_Wrapper.m_PauseActionsCallbackInterface.OnNewaction;
-                @Newaction.performed -= m_Wrapper.m_PauseActionsCallbackInterface.OnNewaction;
-                @Newaction.canceled -= m_Wrapper.m_PauseActionsCallbackInterface.OnNewaction;
                 @PauseGame.started -= m_Wrapper.m_PauseActionsCallbackInterface.OnPauseGame;
                 @PauseGame.performed -= m_Wrapper.m_PauseActionsCallbackInterface.OnPauseGame;
                 @PauseGame.canceled -= m_Wrapper.m_PauseActionsCallbackInterface.OnPauseGame;
@@ -175,9 +149,6 @@ public partial class @PauseAction : IInputActionCollection2, IDisposable
             m_Wrapper.m_PauseActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @Newaction.started += instance.OnNewaction;
-                @Newaction.performed += instance.OnNewaction;
-                @Newaction.canceled += instance.OnNewaction;
                 @PauseGame.started += instance.OnPauseGame;
                 @PauseGame.performed += instance.OnPauseGame;
                 @PauseGame.canceled += instance.OnPauseGame;
@@ -187,7 +158,6 @@ public partial class @PauseAction : IInputActionCollection2, IDisposable
     public PauseActions @Pause => new PauseActions(this);
     public interface IPauseActions
     {
-        void OnNewaction(InputAction.CallbackContext context);
         void OnPauseGame(InputAction.CallbackContext context);
     }
 }
