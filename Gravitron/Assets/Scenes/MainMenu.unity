@@ -1540,8 +1540,8 @@ GameObject:
   m_Component:
   - component: {fileID: 479159474}
   - component: {fileID: 479159473}
-  - component: {fileID: 479159472}
   - component: {fileID: 479159475}
+  - component: {fileID: 479159472}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -1575,7 +1575,7 @@ MonoBehaviour:
   m_ScrollWheelAction: {fileID: -4685950575643447214, guid: 14b9c0e0d306b4d8fb19926864386dfc, type: 3}
   m_TrackedDevicePositionAction: {fileID: -2871162879553533839, guid: 14b9c0e0d306b4d8fb19926864386dfc, type: 3}
   m_TrackedDeviceOrientationAction: {fileID: 8500542026038968397, guid: 14b9c0e0d306b4d8fb19926864386dfc, type: 3}
-  m_DeselectOnBackgroundClick: 0
+  m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
 --- !u!114 &479159473
 MonoBehaviour:
