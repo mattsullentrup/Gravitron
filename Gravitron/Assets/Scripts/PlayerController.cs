@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     private float movementX;
     private float movementY;
 
-    PlayerControls controls;
+    public static PlayerControls controls;
 
     void Awake()
     {

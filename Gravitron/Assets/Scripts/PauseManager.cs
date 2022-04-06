@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public class PauseManager : MonoBehaviour
 {
     public static PauseManager pauseManagerInstance { get; set; }
-    PauseAction action;
+    PlayerControls pauseAction;
     public static bool paused = false;
     private GameObject canvas;
     public GameObject pauseMenu;
@@ -24,22 +24,26 @@ public class PauseManager : MonoBehaviour
             pauseManagerInstance = this;
         }
 
-        action = new PauseAction();
+        pauseAction = new PlayerControls();
     }
 
     private void OnEnable()
     {
-        action.Enable();
+        pauseAction.Enable();
+        pauseAction.UI.Enable();
+        PlayerController.controls.Enable();
     }
 
     private void OnDisable()
     {
-        action.Disable();
+        pauseAction.Disable();
+        PlayerController.controls.Disable();
+        pauseAction.UI.Disable();
     }
 
     private void Start()
     {
-        action.Pause.PauseGame.performed += _ => DeterminePause();
+        pauseAction.Pause.PauseGame.performed += _ => DeterminePause();
         canvas = GameObject.Find("Canvas");
         pauseMenu = canvas.transform.GetChild(2).GetChild(0).gameObject;
         pauseFirstButtton = pauseMenu.transform.GetChild(4).gameObject;
@@ -57,6 +61,9 @@ public class PauseManager : MonoBehaviour
         Time.timeScale = 0;
         paused = true;
         pauseMenu.SetActive(true);
+        PlayerController.controls.Disable();
+        pauseAction.UI.Enable();
+
 
         //clear selected object
         EventSystem.current.SetSelectedGameObject(null);
@@ -69,5 +76,7 @@ public class PauseManager : MonoBehaviour
         Time.timeScale = 1;
         paused = false;
         pauseMenu.SetActive(false);
+        pauseAction.UI.Disable();
+        PlayerController.controls.Enable();
     }
 }
