@@ -32,7 +32,7 @@ public class EnemyOne : MonoBehaviour
         if (enemyHealth <= 0)
         {
             Destroy(gameObject);
-            GameManager.Manager.UpdateScore(pointValue);
+            ScoreManager.ScoreManagerInstance.UpdateScore(pointValue);
         }
     }
 

@@ -9,8 +9,8 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Manager { get; set; } //Encapsulation
-    public TextMeshProUGUI scoreText;
-    private int score;
+    
+    
     public bool gameOver;
     [SerializeField] private GameObject canvas;
     [SerializeField] private GameObject playerHealthThree;
@@ -19,12 +19,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject healthUI;
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject gameOverFirstButton;
-    //public GameObject gameOverScreen;
     CanvasManager canvasManager;
 
     private void Awake()
     {
-        
+
         if (Manager != null)
         {
             Destroy(gameObject);
@@ -37,24 +36,20 @@ public class GameManager : MonoBehaviour
 
         //gameOver = false;
         player = GameObject.Find("Player");
-
     }
 
     private void Start()
     {
-
-
         canvas = GameObject.Find("Canvas");
-        scoreText = canvas.transform.GetChild(2).GetChild(1).GetComponent<TextMeshProUGUI>();
+        
         healthUI = canvas.transform.GetChild(2).GetChild(3).gameObject;
         playerHealthThree = healthUI.transform.GetChild(0).gameObject;
         playerHealthTwo = healthUI.transform.GetChild(1).gameObject;
         playerHealthOne = healthUI.transform.GetChild(2).gameObject;
         gameOverFirstButton = canvas.transform.GetChild(3).GetChild(1).gameObject;
-        //gameOverScreen = canvas.transform.GetChild(3).gameObject;
         canvasManager = CanvasManager.GetInstance();
         StartGame();
-        UpdateScore(0);
+        //UpdateScore(0);
     }
 
     private void Update()
@@ -64,36 +59,27 @@ public class GameManager : MonoBehaviour
         CheckPlayerHealth();
     }
 
-    public void UpdateScore(int scoreToAdd)
-    {
-        score += scoreToAdd;
-        scoreText.text = "Score: " + score;
-    }
-
     public void GameOver()
     {
-        //if (PlayerHealth.currentPlayerHealth <= 0)
-        //{
-            gameOver = true;
-            //gameOverScreen.SetActive(true);'
-            canvasManager.SwitchCanvas(CanvasType.EndScreen);
-            Destroy(player);
-            StopAllCoroutines();
+        gameOver = true;
+        canvasManager.SwitchCanvas(CanvasType.EndScreen);
+        Destroy(player);
+        StopAllCoroutines();
 
-            //clear selected object
-            EventSystem.current.SetSelectedGameObject(null);
-            //set a new selected object
-            EventSystem.current.SetSelectedGameObject(gameOverFirstButton);
-        //}
+        
+        //clear selected object
+        EventSystem.current.SetSelectedGameObject(null);
+        //set a new selected object
+        EventSystem.current.SetSelectedGameObject(gameOverFirstButton);
     }
 
     public void StartGame()
     {
         //canvasManager.SwitchCanvas(CanvasType.GameUI);
         gameOver = false;
-        score = 0;
-        UpdateScore(0);
-        
+        ScoreManager.ScoreManagerInstance.score = 0;
+        ScoreManager.ScoreManagerInstance.UpdateScore(0);
+
         playerHealthThree.SetActive(true);
         playerHealthTwo.SetActive(true);
         playerHealthOne.SetActive(true);

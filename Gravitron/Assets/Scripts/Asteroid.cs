@@ -37,7 +37,7 @@ public class Asteroid : MonoBehaviour
         if (asteroidHealth <= 0)
         {
             Destroy(gameObject);
-            GameManager.Manager.UpdateScore(pointValue);
+            ScoreManager.ScoreManagerInstance.UpdateScore(pointValue);
         }
     }
 

@@ -12,7 +12,8 @@ public enum ButtonType
     GAMEOVER_MENU_BUTTON,
     PAUSE_MENU_BUTTON,
     RESTART_BUTTON,
-    RESUME
+    RESUME,
+    RESET
 }
 
 [RequireComponent(typeof(Button))]
@@ -80,9 +81,14 @@ public class ButtonController : MonoBehaviour
             case ButtonType.GAMEOVER_MENU_BUTTON:
                 SceneManager.LoadScene("MainMenu");
                 canvasManager.SwitchCanvas(CanvasType.MainMenu);
+                ScoreManager.ScoreManagerInstance.highScoreText.text = "High Score: " + PlayerPrefs.GetInt("highScore", 0).ToString();
 
                 EventSystem.current.SetSelectedGameObject(null);
                 EventSystem.current.SetSelectedGameObject(mainMenuFirstButton);
+                break;
+            case ButtonType.RESET:
+                PlayerPrefs.DeleteKey("highScore");
+                ScoreManager.ScoreManagerInstance.highScoreText.text = "High Score: 0";
                 break;
             default:
                 break;
