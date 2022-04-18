@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject healthUI;
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject gameOverFirstButton;
+    [SerializeField] string playerName = "matt";
     CanvasManager canvasManager;
 
     private void Awake()
@@ -66,6 +67,7 @@ public class GameManager : MonoBehaviour
         Destroy(player);
         StopAllCoroutines();
 
+        ScoreManager.ScoreManagerInstance.AddHighscoreIfPossible(new HighscoreElement(playerName, ScoreManager.ScoreManagerInstance.score));
         
         //clear selected object
         EventSystem.current.SetSelectedGameObject(null);
