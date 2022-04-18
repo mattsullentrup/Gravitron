@@ -28,9 +28,9 @@ public class ScoreManager : MonoBehaviour
 
     void Start()
     {
-        scoreText = this.transform.GetChild(2).GetChild(1).GetComponent<TextMeshProUGUI>();
+        scoreText = this.transform.GetChild(3).GetChild(1).GetComponent<TextMeshProUGUI>();
         //Debug.Log(PlayerPrefs.GetInt("highScore", 0).ToString());
-        highScoreText = this.transform.GetChild(0).GetChild(4).GetComponent<TextMeshProUGUI>();
+        highScoreText = this.transform.GetChild(0).GetChild(5).GetComponent<TextMeshProUGUI>();
         highScoreText.text = "High Score: " + PlayerPrefs.GetInt("highScore", 0).ToString();
     }
 

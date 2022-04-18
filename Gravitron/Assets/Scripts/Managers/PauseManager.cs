@@ -45,7 +45,7 @@ public class PauseManager : MonoBehaviour
     {
         pauseAction.Pause.PauseGame.performed += _ => DeterminePause();
         canvas = GameObject.Find("Canvas");
-        pauseMenu = canvas.transform.GetChild(2).GetChild(0).gameObject;
+        pauseMenu = canvas.transform.GetChild(3).GetChild(0).gameObject;
         pauseFirstButtton = pauseMenu.transform.GetChild(4).gameObject;
     }
 

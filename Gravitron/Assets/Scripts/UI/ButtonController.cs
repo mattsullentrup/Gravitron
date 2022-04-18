@@ -7,7 +7,9 @@ public enum ButtonType
 {
     START_GAME,
     OPTIONS_BUTTON,
-    BACK_BUTTON,
+    HIGH_SCORES,
+    BACK_BUTTON_OPTIONS,
+    BACK_BUTTON_HIGH_SCORES,
     QUIT_BUTTON,
     GAMEOVER_MENU_BUTTON,
     PAUSE_MENU_BUTTON,
@@ -24,7 +26,7 @@ public class ButtonController : MonoBehaviour
     CanvasManager canvasManager;
     Button menuButton;
 
-    [SerializeField] private GameObject optionsFirstButton, optionsClosedButton, mainMenuFirstButton;
+    [SerializeField] private GameObject optionsFirstButton, optionsClosedButton, mainMenuFirstButton, highScoresFirstButton, highScoresClosedButton;
     private GameObject canvas;
 
     private void Start()
@@ -34,9 +36,11 @@ public class ButtonController : MonoBehaviour
         canvasManager = CanvasManager.GetInstance();
 
         canvas = GameObject.Find("Canvas");
-        optionsFirstButton = canvas.transform.GetChild(1).GetChild(1).gameObject;
+        optionsFirstButton = canvas.transform.GetChild(2).GetChild(1).gameObject;
+        highScoresFirstButton = canvas.transform.GetChild(1).GetChild(1).gameObject;
         mainMenuFirstButton = canvas.transform.GetChild(0).GetChild(1).gameObject;
         optionsClosedButton = canvas.transform.GetChild(0).GetChild(2).gameObject;
+        highScoresClosedButton = canvas.transform.GetChild(0).GetChild(3).gameObject;
     }
 
     void OnButtonClicked()
@@ -53,11 +57,23 @@ public class ButtonController : MonoBehaviour
                 EventSystem.current.SetSelectedGameObject(null);
                 EventSystem.current.SetSelectedGameObject(optionsFirstButton);
                 break;
-            case ButtonType.BACK_BUTTON:
+            case ButtonType.HIGH_SCORES:
+                canvasManager.SwitchCanvas(CanvasType.HighScoresScreen);
+
+                EventSystem.current.SetSelectedGameObject(null);
+                EventSystem.current.SetSelectedGameObject(highScoresFirstButton);
+                break;
+            case ButtonType.BACK_BUTTON_OPTIONS:
                 canvasManager.SwitchCanvas(CanvasType.MainMenu);
 
                 EventSystem.current.SetSelectedGameObject(null);
                 EventSystem.current.SetSelectedGameObject(optionsClosedButton);
+                break;
+            case ButtonType.BACK_BUTTON_HIGH_SCORES:
+                canvasManager.SwitchCanvas(CanvasType.MainMenu);
+
+                EventSystem.current.SetSelectedGameObject(null);
+                EventSystem.current.SetSelectedGameObject(highScoresClosedButton);
                 break;
             case ButtonType.QUIT_BUTTON:
                 Application.Quit();

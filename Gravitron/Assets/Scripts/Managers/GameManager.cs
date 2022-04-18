@@ -42,11 +42,11 @@ public class GameManager : MonoBehaviour
     {
         canvas = GameObject.Find("Canvas");
         
-        healthUI = canvas.transform.GetChild(2).GetChild(3).gameObject;
+        healthUI = canvas.transform.GetChild(3).GetChild(3).gameObject;
         playerHealthThree = healthUI.transform.GetChild(0).gameObject;
         playerHealthTwo = healthUI.transform.GetChild(1).gameObject;
         playerHealthOne = healthUI.transform.GetChild(2).gameObject;
-        gameOverFirstButton = canvas.transform.GetChild(3).GetChild(1).gameObject;
+        gameOverFirstButton = canvas.transform.GetChild(4).GetChild(1).gameObject;
         canvasManager = CanvasManager.GetInstance();
         StartGame();
         //UpdateScore(0);

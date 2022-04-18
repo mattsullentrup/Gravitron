@@ -8,7 +8,8 @@ public enum CanvasType
     MainMenu,
     GameUI,
     EndScreen,
-    OptionsMenu
+    OptionsMenu,
+    HighScoresScreen
 }
 
 public class CanvasManager : Singleton<CanvasManager>
